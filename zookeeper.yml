@@ -1,0 +1,24 @@
+---
+# Author: Zak Hassan
+# Usage: ansible-playbook zookeeper.yml
+# 
+# Description: Playbook created to demonstrate provisioning cloud environment in like less than 1 min. :) 
+#
+ - name: Configure Apache Zookeeper
+   hosts:  openstackcloud-server1
+   sudo: True     
+   gather_facts: True
+   vars:
+     clientPort : 2181
+     dataDir: /usr/local/zookeeper/logs/
+     syncLimit: 2
+     initLimit: 5
+     tickTime: 2000
+   tasks:
+     - name: install git
+       yum: name=git state=latest
+     - name: creating zookeeper directory structure
+       git: repo=https://github.com/zmhassan/zookeeper-quickstart.git dest=/usr/local/zookeeper
+     - name: setup configuration file
+       template: src=templates/zoo.cfg.j2
+             dest=/usr/local/zookeeper/conf/zoo.cfg
