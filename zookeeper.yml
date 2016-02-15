@@ -9,8 +9,6 @@
    sudo: True     
    gather_facts: True
    vars:
-     myid: 1
-     clientPort : 2181
      service_name: zookeeper
      zk_dir: /usr/local/zookeeper
      dataDir: /usr/local/zookeeper/logs/
@@ -33,7 +31,7 @@
        register: zk_dir_stat
      - name: rename file
        command: creates="/usr/local/zookeeper" mv /usr/local/zookeeper-3.5.1-alpha/  /usr/local/zookeeper
-       when: zk_dir_stat.stat.exists
+       when: zk_dir_stat.stat.exists == False
      - name: change permissions to centos user
        command: chown -R centos:centos /usr/local/zookeeper
      - name: create logs directory
@@ -48,6 +46,10 @@
        template: src=templates/zookeeper-systemd.j2
              dest=/lib/systemd/system/zookeeper.service
        register: install_config
+     - name: setup hosts file
+       template: src=templates/hosts.j2
+             dest=/etc/hosts
+       register: installing_hosts_config
 #     - name: creating zookeeper directory structure
 #       git: repo=https://github.com/zmhassan/zookeeper-quickstart.git dest=/usr/local/zookeeper update=yes
 #     - name: notify systemd of config changes
