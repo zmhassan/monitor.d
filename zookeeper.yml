@@ -1,12 +1,13 @@
 ---
 # Author: Zak Hassan
 # Usage: ansible-playbook zookeeper.yml
-# 
-# Description: Playbook created to demonstrate provisioning cloud environment in like less than 1 min. :) 
+#
+#
+# Description: Playbook created to demonstrate provisioning cloud environment in like less than 1 min. :)
 #
  - name: Configure Apache Zookeeper
-   hosts: all 
-   sudo: True     
+   hosts: all
+   sudo: True
    gather_facts: True
    vars:
      service_name: zookeeper
@@ -24,7 +25,7 @@
        yum: name=wget state=latest
      - name: download zookeeper from apache mirror
        command: wget http://apache.sunsite.ualberta.ca/zookeeper/zookeeper-3.5.0-alpha/zookeeper-3.5.0-alpha.tar.gz -P /tmp/
-     - name: unzip tarball and place in /usr/local/ 
+     - name: unzip tarball and place in /usr/local/
        command: tar zxf /tmp/zookeeper-3.5.0-alpha.tar.gz -C /usr/local/
      - name: stat /usr/local/zookeeper
        stat: path=/usr/local/zookeeper
