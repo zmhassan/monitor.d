@@ -12,7 +12,7 @@
      service_name: zookeeper
      zk_dir: /usr/local/zookeeper
      dataDir: /usr/local/zookeeper/logs/
-     syncLimit: 2
+     syncLimit: 3
      initLimit: 5
      tickTime: 2000
    tasks:
@@ -23,14 +23,14 @@
      - name: install wget
        yum: name=wget state=latest
      - name: download zookeeper from apache mirror
-       command: wget http://apache.sunsite.ualberta.ca/zookeeper/zookeeper-3.5.1-alpha/zookeeper-3.5.1-alpha.tar.gz -P /tmp/
+       command: wget http://apache.sunsite.ualberta.ca/zookeeper/zookeeper-3.5.0-alpha/zookeeper-3.5.0-alpha.tar.gz -P /tmp/
      - name: unzip tarball and place in /usr/local/ 
-       command: tar zxf /tmp/zookeeper-3.5.1-alpha.tar.gz -C /usr/local/
+       command: tar zxf /tmp/zookeeper-3.5.0-alpha.tar.gz -C /usr/local/
      - name: stat /usr/local/zookeeper
        stat: path=/usr/local/zookeeper
        register: zk_dir_stat
      - name: rename file
-       command: creates="/usr/local/zookeeper" mv /usr/local/zookeeper-3.5.1-alpha/  /usr/local/zookeeper
+       command: creates="/usr/local/zookeeper" mv /usr/local/zookeeper-3.5.0-alpha/  /usr/local/zookeeper
        when: zk_dir_stat.stat.exists == False
      - name: change permissions to centos user
        command: chown -R centos:centos /usr/local/zookeeper
@@ -50,8 +50,6 @@
        template: src=templates/hosts.j2
              dest=/etc/hosts
        register: installing_hosts_config
-#     - name: creating zookeeper directory structure
-#       git: repo=https://github.com/zmhassan/zookeeper-quickstart.git dest=/usr/local/zookeeper update=yes
 #     - name: notify systemd of config changes
 #       command: systemctl daemon-reload
 #       when: install_config.changed == True
