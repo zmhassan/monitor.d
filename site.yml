@@ -1,0 +1,11 @@
+---
+# Author: Zak Hassan
+# Usage: ansible-playbook zookeeper.yml
+#
+#
+# Description: Playbook created to demonstrate provisioning cloud environment in like less than 1 min. :)
+#
+ - name: Configure Apache Zookeeper
+   hosts: all
+   roles:
+    - zookeeper

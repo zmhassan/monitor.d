@@ -1,8 +1,8 @@
 ---
 ###################################################################################
 # Author: Zak Hassan
-# Description: Playbook created to demonstrate provisioning cloud environment in
-#              like less than 1 min. :)
+# Description: Playbook Apache Zookeeper on openstack like less than 1 min. :)
+#
 ###################################################################################
 - name: install git
   yum: name=git state=latest
@@ -25,16 +25,16 @@
 - name: create logs directory
   file: path=/usr/local/zookeeper/logs state=directory mode=0755 group=centos owner=centos
 - name: setup configuration file
-  template: src=templates/zoo.cfg.j2
+  template: src=zoo.cfg.j2
         dest=/usr/local/zookeeper/conf/zoo.cfg
 - name: setup zk myid file
-  template: src=templates/myid.j2
+  template: src=myid.j2
         dest=/usr/local/zookeeper/logs/myid
 - name: setup systemd unit file
-  template: src=templates/zookeeper-systemd.j2
+  template: src=zookeeper-systemd.j2
         dest=/lib/systemd/system/zookeeper.service
   register: install_config
 - name: setup hosts file
-  template: src=templates/hosts.j2
+  template: src=hosts.j2
         dest=/etc/hosts
   register: installing_hosts_config
