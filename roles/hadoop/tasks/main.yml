@@ -1,2 +1,54 @@
 ---
-# tasks file for hadoop
+########################################################
+# tasks setting up hadoop (only supports single node). I'm working on making it work across cluster.
+# Author: Zak Hassan
+# Usage: ansible-playbook site.yml or make install
+#
+#
+# Description: Playbook created to demonstrate provisioning cloud environment in like less than 1 min. :)
+#####################################################
+- name: stat /tmp/{{ hadoop_binary }}
+  stat: path=/tmp/{{ hadoop_binary }}
+  register: hdbinary_stat
+  #- name: copy kafka to tmp folder
+  # copy: src={{ hadoop_binary }} dest=/tmp/ group={{ hadoop_gid }}
+  # when: hdbinary_stat.stat.exists == False
+  # tags:
+  #   - provision_copy_to_remote
+- name: download hadoop from apache mirror
+  command: wget http://apache.sunsite.ualberta.ca/hadoop/common/hadoop-2.6.4/hadoop-2.6.4.tar.gz -P /tmp/
+  tags:
+    - binary_download
+- name: unzip tarball and place in /usr/local/
+  command: tar zxvf /tmp/{{ hadoop_binary }}  -C {{ hadoop_prefix_dir }}
+  tags:
+    - provision_hdfs
+- name: stat {{ hadoop_install_dir }}
+  stat: path={{ hadoop_install_dir }}
+  register: hd_dir_stat
+- name: rename file
+  command: creates="{{ hadoop_install_dir }}" mv {{ hadoop_prefix_dir }}/{{ hadoop_version }}/  {{ hadoop_install_dir }}
+  when: hd_dir_stat.stat.exists == False
+- name: change permissions to {{ hadoop_uid }} user with {{ hadoop_gid }} group for {{ hadoop_version }}
+  command: chown -R {{ hadoop_uid }}:{{ hadoop_gid }} {{ hadoop_install_dir }}
+- name: setup core-site.xml file
+  template: src=core-site.xml.j2
+        dest={{ hadoop_install_dir }}/etc/hadoop/core-site.xml
+- name: setup hdfs-site.xml file
+  template: src=hdfs-site.xml.j2
+        dest={{ hadoop_install_dir }}/etc/hadoop/hdfs-site.xml
+- name: setup mapred-site.xml file
+  template: src=mapred-site.xml.j2
+        dest={{ hadoop_install_dir }}/etc/hadoop/mapred-site.xml
+- name: setup yarn-site.xml file
+  template: src=yarn-site.xml.j2
+        dest={{ hadoop_install_dir }}/etc/hadoop/yarn-site.xml
+- name: setup yarn-site.xml file
+  template: src=yarn-site.xml.j2
+        dest={{ hadoop_install_dir }}/etc/hadoop/yarn-site.xml
+- name: setup hadoop-env.sh file
+  template: src=hadoop-env.sh.j2
+        dest={{ hadoop_install_dir }}/etc/hadoop/hadoop-env.sh
+# export HADOOP_PREFIX=/opt/local/hadoop
+# export PATH=/opt/local/hadoop/bin:/opt/local/hadoop/sbin:$PATH
+# TODO: hdfs namenode -format & $HADOOP_PREFIX/sbin/start-dfs.sh &  $HADOOP_PREFIX/sbin/start-yarn.sh

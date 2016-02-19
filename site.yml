@@ -5,9 +5,10 @@
 #
 # Description: Playbook created to demonstrate provisioning cloud environment in like less than 1 min. :)
 #
- - name: Configure Apache Zookeeper & Kafka
+ - name: Configure Apache Zookeeper, Kafka, Hadoop
    sudo: True
-   hosts: all
+   hosts: localhost
    roles:
 #    - zookeeper
-    - kafka
+#    - kafka
+     - hadoop
