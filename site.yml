@@ -7,7 +7,7 @@
 #
  - name: Configure Apache Zookeeper, Kafka, Hadoop
    sudo: True
-   hosts: localhost
+   hosts: all
    roles:
 #    - zookeeper
 #    - kafka

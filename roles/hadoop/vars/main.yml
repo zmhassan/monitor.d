@@ -1,8 +1,8 @@
 ---
 # vars file for hadoop
 hadoop_binary: hadoop-2.6.4.tar.gz
-hadoop_install_dir: /opt/local/hadoop
-hadoop_prefix_dir: /opt/local
+hadoop_install_dir: /usr/local/hadoop
+hadoop_prefix_dir: /usr/local
 hadoop_version: hadoop-2.6.4
 hadoop_uid: centos
 hadoop_gid: centos
