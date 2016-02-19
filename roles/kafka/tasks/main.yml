@@ -1,2 +1,52 @@
 ---
-# tasks file for kafka
+###################################################################################
+# Author: Zak Hassan
+# Description: Playbook Apache Kafka on openstack like less than 1 min. :)
+#
+###################################################################################
+- name: install git, java7, wget, screen, telnet
+  yum: name={{ item }} state=latest
+  with_items:
+    - git
+    - java-1.7.0-openjdk-devel.x86_64
+    - wget
+    - screen
+    - telnet
+  tags:
+    - provision_rpm
+- name: stat /tmp/{{ kafka_binary }}
+  stat: path=/tmp/{{ kafka_binary }}
+  register: kfbinary_stat
+- name: copy kafka to tmp folder
+  copy: src={{ kafka_binary }} dest=/tmp/ group=centos
+  when: kfbinary_stat.stat.exists == False
+  tags:
+    - provision_copy_to_remote
+- name: unzip tarball and place in /usr/local/
+  command: tar zxvf /tmp/{{ kafka_binary }}  -C /usr/local/
+  tags:
+    - provision_
+- name: stat {{ kafka_install_dir }}
+  stat: path={{ kafka_install_dir }}
+  register: kf_dir_stat
+- name: rename file
+  command: creates="{{ kafka_install_dir }}" mv /usr/local/{{ kafka_version }}/  {{ kafka_install_dir }}
+  when: kf_dir_stat.stat.exists == False
+- name: change permissions to centos user for {{ kafka_version }}
+  command: chown -R centos:centos {{ kafka_install_dir }}
+# - name: create logs directory
+#   file: path=/usr/local/zookeeper/logs state=directory mode=0755 group=centos owner=centos
+# - name: setup configuration file
+#   template: src=zoo.cfg.j2
+#         dest=/usr/local/zookeeper/conf/zoo.cfg
+# - name: setup zk myid file
+#   template: src=myid.j2
+#         dest=/usr/local/zookeeper/logs/myid
+# - name: setup systemd unit file
+#   template: src=zookeeper-systemd.j2
+#         dest=/lib/systemd/system/zookeeper.service
+#   register: install_config
+# - name: setup hosts file
+#   template: src=hosts.j2
+#         dest=/etc/hosts
+#   register: installing_hosts_config

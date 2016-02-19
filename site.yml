@@ -1,11 +1,13 @@
 ---
 # Author: Zak Hassan
-# Usage: ansible-playbook zookeeper.yml
+# Usage: ansible-playbook site.yml or make install
 #
 #
 # Description: Playbook created to demonstrate provisioning cloud environment in like less than 1 min. :)
 #
- - name: Configure Apache Zookeeper
+ - name: Configure Apache Zookeeper & Kafka
+   sudo: True
    hosts: all
    roles:
-    - zookeeper
+#    - zookeeper
+    - kafka
