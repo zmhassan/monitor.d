@@ -1,0 +1,12 @@
+[Unit]
+Description=Kafka Messaging Broker Service
+After=network.target
+
+[Service]
+User=centos
+Environment=JAVA_HOME=/usr/lib/jvm/java-1.7.0
+ExecStart={{ kafka_dir }}/bin/kafka-server-start.sh {{ kafka_dir }}/config/server.properties
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
