@@ -42,10 +42,10 @@
 # - name: setup zk myid file
 #   template: src=myid.j2
 #         dest=/usr/local/zookeeper/logs/myid
-# - name: setup systemd unit file
-#   template: src=zookeeper-systemd.j2
-#         dest=/lib/systemd/system/zookeeper.service
-#   register: install_config
+ - name: setup systemd unit file
+   template: src=kafka.systemd.j2
+         dest=/lib/systemd/system/kafka.service
+   register: install_config
 # - name: setup hosts file
 #   template: src=hosts.j2
 #         dest=/etc/hosts

@@ -1,2 +1,11 @@
 ---
 # handlers file for kafka
+- name: Install unit file
+  sudo: true
+  copy: src=kafka.service dest=/lib/systemd/system/ owner=root mode=644
+  notify:
+    - reload systemd
+    - restart kafka
+- name: reload systemd
+  sudo: yes
+  command: systemctl daemon-reload
