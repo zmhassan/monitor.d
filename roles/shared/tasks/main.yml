@@ -1,2 +1,10 @@
 ---
 # tasks file for env
+- name: setup hosts file
+  template: src=hosts.j2
+        dest=/etc/hosts
+  register: installing_hosts_config
+- name: setup bashrc file
+  template: src=bashrc.j2
+        dest={{ HOME }}/.bashrc
+  register: installing_hosts_config
