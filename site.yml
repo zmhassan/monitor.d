@@ -10,5 +10,5 @@
    hosts: all
    roles:
 #    - zookeeper
-#    - kafka
-     - hadoop
+    - kafka
+#     - hadoop
