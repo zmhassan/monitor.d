@@ -34,13 +34,16 @@
    when: kf_dir_stat.stat.exists == False
  - name: change permissions to centos user for {{ kafka_version }}
    command: chown -R centos:centos {{ kafka_install_dir }}
+ - name: setup kafka property file
+   template: src=server.properties.j2
+        dest=/usr/local/kafka/config/server.properties
  - name: setup systemd unit file
    template: src=kafka.systemd.j2
          dest=/lib/systemd/system/kafka.service
    register: install_config
-   notify:
-     - reload systemd
-     - restart kafka
+#   notify:
+#     - reload systemd
+#     - restart kafka
 
 # - name: create logs directory
 #   file: path=/usr/local/zookeeper/logs state=directory mode=0755 group=centos owner=centos
