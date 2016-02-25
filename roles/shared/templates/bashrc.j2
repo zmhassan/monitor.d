@@ -6,12 +6,15 @@ if [ -f /etc/bashrc ]; then
 fi
 
 JAVA_HOME="/usr/lib/jvm/java-1.7.0"
+KAFKA_HOME="/usr/local/kafka"
 ZOOKEEPER_HOME="/usr/local/zookeeper"
 export PATH=$JAVA_HOME'/bin':ZOOKEEPER_HOME'/bin':$PATH
 
 function zk-start-foreground(){
   $ZOOKEEPER_HOME/bin/zkServer.sh   start-foreground   $ZOOKEEPER_HOME/conf/zoo.cfg
 }
+
+ 
 
 function zk-start(){
   $ZOOKEEPER_HOME/bin/zkServer.sh   start   $ZOOKEEPER_HOME/conf/zoo.cfg
