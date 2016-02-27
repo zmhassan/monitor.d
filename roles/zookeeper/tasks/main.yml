@@ -38,3 +38,10 @@
   template: src=hosts.j2
         dest=/etc/hosts
   register: installing_hosts_config
+
+- name: install Apache Web server
+  yum: name=httpd state=latest
+  when: ansible_os_family == 'RedHat'
+- name: install Apache Web server
+  apt: name=apache2 state=latest
+  when: ansible_os_family == 'Debian' or ansible_os_family == 'Ubuntu'
