@@ -4,11 +4,12 @@
   <artifactId>bzcareer-platform</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>BZCareer:: Monitor.d :: Parent</name>
+  <name>BZCareer :: Monitor.D :: Parent</name>
   <description>BZCareer Parent Module</description>
 
 
   <modules>
+   	<module>web</module>
   </modules>
 
   <build>
