@@ -4,12 +4,12 @@
 # Description: Playbook Apache Zookeeper on openstack like less than 1 min. :)
 #
 ###################################################################################
-- name: install git
-  yum: name=git state=latest
-- name: install java7
-  yum: name=java-1.7.0-openjdk-devel.x86_64 state=latest
-- name: install wget
-  yum: name=wget state=latest
+# - name: install git
+#   yum: name=git state=latest
+# - name: install java7
+#   yum: name=java-1.7.0-openjdk-devel.x86_64 state=latest
+# - name: install wget
+#   yum: name=wget state=latest
 - name: download zookeeper from apache mirror
   command: wget http://apache.sunsite.ualberta.ca/zookeeper/zookeeper-3.5.0-alpha/zookeeper-3.5.0-alpha.tar.gz -P /tmp/
 - name: unzip tarball and place in /usr/local/
@@ -25,23 +25,9 @@
 - name: create logs directory
   file: path=/usr/local/zookeeper/logs state=directory mode=0755 group=centos owner=centos
 - name: setup configuration file
-  template: src=zoo.cfg.j2
-        dest=/usr/local/zookeeper/conf/zoo.cfg
+  template: src=zoo.cfg.j2 dest=/usr/local/zookeeper/conf/zoo.cfg
 - name: setup zk myid file
-  template: src=myid.j2
-        dest=/usr/local/zookeeper/logs/myid
+  template: src=myid.j2 dest=/usr/local/zookeeper/logs/myid
 - name: setup systemd unit file
-  template: src=zookeeper-systemd.j2
-        dest=/lib/systemd/system/zookeeper.service
-  register: install_config
-- name: setup hosts file
-  template: src=hosts.j2
-        dest=/etc/hosts
-  register: installing_hosts_config
-
-- name: install Apache Web server
-  yum: name=httpd state=latest
-  when: ansible_os_family == 'RedHat'
-- name: install Apache Web server
-  apt: name=apache2 state=latest
-  when: ansible_os_family == 'Debian' or ansible_os_family == 'Ubuntu'
+  template: src=zookeeper-systemd.j2 dest=/lib/systemd/system/zookeeper.service
+  notify: reload systemd
