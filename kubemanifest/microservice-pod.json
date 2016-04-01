@@ -11,7 +11,7 @@
                     "containers": [
                           {
                           "name": "monitor-d",
-                          "image": "microservice/nodejsapp",
+                          "image": "docker.io/bzcareer/monitord",
                           "ports": [
                                   {
                                   "containerPort": 8080

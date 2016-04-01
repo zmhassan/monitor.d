@@ -9,5 +9,5 @@ echo ' / /|_/ / _ \/ _ \/ / __/ _ \/ __/ / // /'
 echo '/_/  /_/\___/_//_/_/\__/\___/_/   /____/ '
 
 #echo " Building Docker File "                                         
-docker build -t microservice/nodejsapp .
+docker   build   -t    bzcareer/monitord    .
 

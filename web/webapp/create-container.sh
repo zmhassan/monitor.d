@@ -1,2 +1,2 @@
 
-docker run -d -p 8080:8080  microservice/nodejsapp
+docker run -d -p 8080:8080  bzcareer/monitord
