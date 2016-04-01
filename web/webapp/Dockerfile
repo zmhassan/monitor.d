@@ -1,9 +1,9 @@
-  FROM readytalk/nodejs
-
+FROM docker.io/centos 
+MAINTAINER Zak Hassan zak.hassan1010@gmail.com
+RUN curl https://nodejs.org/dist/v4.4.2/node-v4.4.2-linux-x64.tar.xz | tar xvfJ - -C /usr/local/
+RUN mkdir -p /app
 WORKDIR /app
-ADD package.json /app/
-RUN npm install
 ADD . /app
-
-CMD []
-ENTRYPOINT ["/nodejs/bin/npm", "start"]
+RUN /usr/local/node-v4.4.2-linux-x64/bin/npm install
+EXPOSE 8080 
+ENTRYPOINT ["/usr/local/node-v4.4.2-linux-x64/bin/npm", "start"]
