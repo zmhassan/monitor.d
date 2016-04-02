@@ -8,6 +8,7 @@ echo '  /  |/  /__  ___  (_) /____  ____  / _ \'
 echo ' / /|_/ / _ \/ _ \/ / __/ _ \/ __/ / // /'
 echo '/_/  /_/\___/_//_/_/\__/\___/_/   /____/ '
 
-#echo " Building Docker File "                                         
-docker   build   -t    bzcareer/monitord    .
+echo   " Building Docker File "                                         
+docker   build   -t  bzcareer/monitord  .
+docker   push bzcareer/monitord
 

@@ -1,0 +1,14 @@
+{
+    "kind": "Route",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "monitor-d",
+    },
+    "spec": {
+        "host": "monitor-d-demo.router.default.svc.cluster.local",
+        "to": {
+            "kind": "Service",
+            "name": "monitor-d"
+        }
+    }
+}
