@@ -1,10 +1,12 @@
 test:
 	ansible localhost -m monitord -a "url=localhost user=zak"
-installinfra:
+install-infra:
 	ansible-playbook site.yml
-installweb:
-	cd web/webapp & npm install
-testweb:
-	cd web/webapp & echo "Go to url: http://localhost:8000/web/webapp/app" & http-server -a localhost -p 8000 -c-1 
-container:
-	cd web/webapp/; ./init.sh ; cd ../..
+install-web:
+	cd web ; npm install ; npm start
+create-docker-web:
+	./scripts/run-monitord-ui.sh 
+create-docker-img: 	
+	./scripts/make-ui.sh            
+push-docker-img:	
+	./scripts/push-monitord-ui.sh
