@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="app.css">
-    <link rel="stylesheet" href="css/sidebar.css">
+ <link rel="stylesheet" href="app.css">
+   <!--  <link rel="stylesheet" href="css/sidebar.css">-->
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
@@ -23,63 +23,87 @@
           
 </head>
 <body>
-
-   
-
-  
-    <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li>
-                    <br>
-                    <br>
-                </li>
-                <li>
-                    <i class="fa fa-tachometer fa-3x"></i>
-                </li>
-                <li>
-                    <i class="fa fa-cubes fa-3x"></i>
-                </li>
-                <li>
-                    <i class="fa fa-pie-chart fa-3x"></i>
-                </li>
-                <li>
-                    <i class="fa fa-bar-chart fa-3x"></i>
-                </li>
-                <li>
-                        <i class="fa fa-mixcloud fa-3x"></i>
-                </li>
-                <li>
-                    <i class="fa fa-cubes fa-3x"></i>
-                </li>
-            </ul>
-        </div>
-         <div class="navbar navbar-fixed-top" role="navigation" style="background:#fff; padding-top:20px;">
-      <div class="container">
-        <div class="navbar-header">
-             <img src="imgs/logo.png" alt="image of logo" style="width:204px;height:48px;">
-        
-         </div>
-        <div class="collapse navbar-collapse">
-          
-            <ul class="nav navbar-nav" style="float: right">
+<div class="row">
+   <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div>
+       <img src="imgs/logo.png" alt="image of logo" style="width:204px;height:48px;">
+       </div>
+      <div id="top">
+      <ul class="nav navbar-nav" style="float: right">
 <i class="fa fa-envelope"></i>
                 <i class="fa fa-bullhorn fa-1x"></i>
                 <li><i class="fa fa-sign-out fa-1x"></i></li>
 
           </ul>
-        </div>
       </div>
+      
+</div>
+</nav>
     </div>
+<div class="row">
+  <div class="col-md-2">
+    
+    
+    <div id="sidebar-wrapper">
+        
+        <div class="list-group">
+            <br><br><br>
+  <a class="list-group-item" href="#"><i class="fa fa-tachometer fa-fw"></i>&nbsp; Dashboard</a>
+  <a class="list-group-item" href="#"><i class="fa fa-cubes fa-fw"></i>&nbsp; Kube Containers</a>
+  <a class="list-group-item" href="#"><i class="fa fa-pie-chart fa-fw"></i>&nbsp; OS Metrics</a>
+  <a class="list-group-item" href="#"><i class="fa fa-mixcloud fa-fw"></i>&nbsp; Cloud VM's</a>
+  <a class="list-group-item" href="#"><i class="fa fa-paper-plane fa-fw"></i>&nbsp; Deployments</a>
+              <a class="list-group-item" href="#"><i class="fa fa-inbox fa-fw"></i>&nbsp; Inbox</a>
+                 <a class="list-group-item" href="#"><i class="fa fa-bell-o fa-fw"></i>&nbsp; Alert</a>
+                 <a class="list-group-item" href="#"><i class="fa fa-mixcloud fa-fw"></i>&nbsp; Settings</a>
+</div>
+        <!--<ul class="sidebar-nav">
+                <li>
+                    <br>
+                    <br>
 
+                </li>
+                <li class="space-side">
+                   
+                </li>
+                <li class="space-side">
+                    <i class="fa fa-cubes fa-3x"></i>
+                </li>
+                <li class="space-side">
+                    <i class="fa fa-pie-chart fa-3x"></i>
+                </li>
+                <li class="space-side">
+                    <i class="fa fa-bar-chart fa-3x"></i>
+                </li>
+                <li class="space-side">
+                        <i class="fa fa-mixcloud fa-3x"></i>
+                </li>
+                <li class="space-side">
+                    <i class="fa fa-cubes fa-3x"></i>
+                </li>
+            </ul>-->
+        </div>
+      
+      
+    </div>
+  <div class="col-md-9">
+     <div ng-view></div>
+
+  <div>Angular seed app: v<span app-version></span></div>
+    
+    
+    </div>
+</div>
+  
+       
     
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
+ 
 
    
   <!-- In production use:

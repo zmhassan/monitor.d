@@ -34,3 +34,7 @@ body {
     font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;
     
 }
+
+.space-side {
+padding: 30px;
+}
