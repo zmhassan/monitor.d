@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -25,75 +26,70 @@
   <!-- Compiled and minified JavaScript 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>-->
           
-</head>
-<body>
-<div class="row">
-   <nav class="navbar navbar-default navbar-fixed-top">
-     <div>
-        <h2><i class="fa fa-linux"></i>
-
-Monitor<small>.D</small></h2>    <!--<img src="imgs/logo.png" alt="image of logo" style="width:204px;height:48px;">-->
-       </div>
-     
- </nav>
-    </div>
-<div class="row">
-  <div class="col-md-2">
-    
-    
-    <div id="sidebar-wrapper">
+    <style type="text/css">
+        #signOnBox {
+            position: relative;
+            opacity: 0.9;
+        }
         
-        <div class="list-group">
-            <br><br><br>
-  <a class="list-group-item" href="#"><i class="fa fa-tachometer fa-fw"></i>&nbsp; Dashboard</a>
-  <a class="list-group-item" href="#"><i class="fa fa-cubes fa-fw"></i>&nbsp; Kube Containers</a>
-  <a class="list-group-item" href="#"><i class="fa fa-pie-chart fa-fw"></i>&nbsp; OS Metrics</a>
-  <a class="list-group-item" href="#"><i class="fa fa-mixcloud fa-fw"></i>&nbsp; Cloud Admin</a>
-  <a class="list-group-item" href="#"><i class="fa fa-paper-plane fa-fw"></i>&nbsp; Deployments</a>
-  <a class="list-group-item" href="#"><i class="fa fa-search fa-fw"></i>&nbsp; Log Search</a>
-  <a class="list-group-item" href="#"><i class="fa fa-envelope fa-fw"></i>&nbsp; Notification   <span class="badge">3</span></a>
-  <a class="list-group-item" href="#"><i class="fa fa-cogs fa-fw"></i>&nbsp; Settings</a>
-</div>
-        <!--<ul class="sidebar-nav">
-                <li>
-                    <br>
-                    <br>
+        #signOnBox {
+            position: absolute;
+            bottom: 0;
+        }
+        body{
+            background-image: url(imgs/login_background.JPG);
+            background-position: bottom 200px left 7px
 
-                </li>
-                <li class="space-side">
-                   
-                </li>
-                <li class="space-side">
-                    <i class="fa fa-cubes fa-3x"></i>
-                </li>
-                <li class="space-side">
-                    <i class="fa fa-pie-chart fa-3x"></i>
-                </li>
-                <li class="space-side">
-                    <i class="fa fa-bar-chart fa-3x"></i>
-                </li>
-                <li class="space-side">
-                        <i class="fa fa-mixcloud fa-3x"></i>
-                </li>
-                <li class="space-side">
-                    <i class="fa fa-cubes fa-3x"></i>
-                </li>
-            </ul>-->
-        </div>
-      
-      
-    </div>
-  <div class="col-md-9">
-     <div ng-view></div>
+         }
+        .jumbotron{
+         background:inherit;   
+        }
+    </style>
+</head>
 
-  <div>Angular seed app: v<span app-version></span></div>
+<body id="loginBody">
+
+   
+     
+
     
-    
-    </div>
+<div style="padding:50px; width:450px" id="signOnBox">
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Log In</h3>
+  </div>
+  <div class="panel-body">
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i>
+</span>
+
+  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
 </div>
-  
-       
-    
+<br>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key"></i>
+</span>
+  <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+</div>
+  </div>
+
+<div  class="info" style="padding:20px">
+<a href="">Forgot Username or Password ?</a>
+<br>
+<a href="">Not a member ? Register today ?</a>
+<br>
+<input type="checkbox" aria-label="..."> Stay Signed In
+</div>
+
+</div>
+
+</div>
+
+ 
+
+
+   
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -114,4 +110,6 @@ Monitor<small>.D</small></h2>    <!--<img src="imgs/logo.png" alt="image of logo
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
 </body>
+</html>
+
 </html>
