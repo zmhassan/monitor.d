@@ -28,8 +28,6 @@ public class UserController {
 		return repo.findAll();
 	}
 	
-	
-
 	@RequestMapping(method=RequestMethod.POST)
 	public Users getUser( Users user){
 		return repo.save(user);
