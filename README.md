@@ -87,9 +87,9 @@ MOND_DOCKER_IP - The ip address of the private registry for docker
 - Rest API
 
 # Components Of MonitorD:
-
+![alt tag](https://raw.githubusercontent.com/BZCareer/monitor.d/master/Components-Design.png)
 # Architecture: Standalone Mode:
-
+![alt tag](https://raw.githubusercontent.com/BZCareer/monitor.d/master/Architecture-MonitorKubernetesExternally.png )
 
 Contributing A Patch
 
