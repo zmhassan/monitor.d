@@ -10,15 +10,15 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import com.bzcareer.monitord.core.model.Users;
 import com.bzcareer.monitord.core.repository.UserRepository;
 
-@ComponentScan(basePackages = { "com.bzcareer.monitord.core.controller", "com.bzcareer.monitord.core.model",
-		"com.bzcareer.monitord.core.repository" })
+@ComponentScan(basePackages = { 
+		"com.bzcareer.monitord.core.controller",
+		"com.bzcareer.monitord.core.model",
+		"com.bzcareer.monitord.core.repository",
+		"com.bzcareer.monitord.core.services" })
 @SpringBootApplication
- 
 @EnableMongoRepositories(basePackages = { "com.bzcareer.monitord.core.repository" })
 public class MondCoreServicesApplication {
 
-	@Autowired
-	public UserRepository userRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MondCoreServicesApplication.class, args);
