@@ -65,4 +65,13 @@ public class UserRepositoryTest {
 		assertThat("User Data Access Code Inserted Data Successfully Deleted All", userRepository.findAll().size(), is(0));
 	}
 
+	@Test
+	public void checkPutOne(){
+		Users user= userRepository.findByUsername("ui");
+		 user.setTeam("numberOne");
+ 		userRepository.save(user);
+		assertThat("User Data Access Code Inserted Data Successfully Put One", userRepository.findAll().size(), is(3));
+		assertThat("User Data Access Code Inserted Data Successfully Put One", userRepository.findByUsername("ui").getTeam(), is("numberOne"));
+	}
+	
 }
