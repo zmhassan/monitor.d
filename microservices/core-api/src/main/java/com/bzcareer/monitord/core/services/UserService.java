@@ -2,17 +2,53 @@ package com.bzcareer.monitord.core.services;
 
 import java.util.List;
 
+import com.bzcareer.monitord.core.model.UserDAO;
 import com.bzcareer.monitord.core.model.Users;
 
 public interface UserService {
-	Users create(Users user);
 
-	Users delete(String id);
+	interface ValidationRules {
+		int max();
 
-	List<Users> findAll();
+		int min();
+	}
 
-	Users findById(String id);
+	// Validation Rules. Plan on moving this somewhere else but for here its
+	// here.
+	enum ValidUser implements ValidationRules {
+		USERNAME {
+			public int max() {
+				return 20;
+			}
 
-	Users update(Users users);
+			public int min() {
+				return 5;
+			}
+		},
+		PASSWORD {
+			public int max() {
+				return 10;
+			}
+
+			public int min() {
+				return 5;
+			}
+		};
+	}
+
+	UserDAO create(UserDAO user);
+
+	UserDAO delete(String id);
+
+	List<UserDAO> findAll();
+
+	UserDAO findById(String id);
+
+	UserDAO update(UserDAO users);
+
+	void deleteAll();
+	
+	UserDAO findByUsername(String username);
+	void delete(UserDAO users);
 
 }

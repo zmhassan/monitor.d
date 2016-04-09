@@ -1,10 +1,12 @@
 package com.bzcareer.monitord.core.repository;
 
-import com.bzcareer.monitord.core.model.Users;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.bzcareer.monitord.core.model.Users;
+ 
 public interface UserRepository extends MongoRepository<Users, String> {
 
 	Users findByUsername(String username);
@@ -15,7 +17,8 @@ public interface UserRepository extends MongoRepository<Users, String> {
 
 	List<Users> findAll();
 
-	Users findOne(String id);
+	
+    Users  findOne(String id);
 
 	Users save(Users user);
 

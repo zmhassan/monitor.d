@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.web.WebAppConfiguration;
 import com.bzcareer.monitord.core.config.MondCoreServicesApplication;
+import com.bzcareer.monitord.core.model.UserDAO;
 import com.bzcareer.monitord.core.model.Users;
 import com.bzcareer.monitord.core.repository.UserRepository;
 //import static org.hamcrest.MatcherAssert.*;
@@ -25,15 +26,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringApplicationConfiguration(classes = MondCoreServicesApplication.class)
 @WebAppConfiguration
 public class UserRepositoryTest {
+
 	@Autowired
-	public UserRepository userRepository;
+	public UserService userRepository;
 
 	@Before
 	public void bootStrap() {
 		userRepository.deleteAll();
-		userRepository.save(new Users("testing", "testing123", "QA"));
-		userRepository.save(new Users("development", "developing123", "DEV"));
-		userRepository.save(new Users("ui", "ui123", "UI"));
+		userRepository.create(new UserDAO("testing", "testing123", "QA"));
+		userRepository.create(new UserDAO("development", "developing123", "DEV"));
+		userRepository.create(new UserDAO("ui", "ui123", "UI"));
 	}
 
 	@Test
@@ -49,29 +51,31 @@ public class UserRepositoryTest {
 	@Test
 	public void checkingForWrongDataInserted() {
 		assertThat("Wrong Valid Data Is Correct", userRepository.findByUsername("FAILINGTeam"),
-				is(nullValue(Users.class)));
-
+				is(nullValue(UserDAO.class)));
 	}
-	
+
 	@Test
-	public void checkDeleteOperation(){
+	public void checkDeleteOperation() {
 		userRepository.delete(userRepository.findByUsername("ui"));
-		assertThat("User Data Access Code Inserted Data Successfully Deleted One", userRepository.findAll().size(), is(2));
+		assertThat("User Data Access Code Inserted Data Successfully Deleted One", userRepository.findAll().size(),
+				is(2));
 	}
 
 	@Test
-	public void checkDeleteAll(){
+	public void checkDeleteAll() {
 		userRepository.deleteAll();
-		assertThat("User Data Access Code Inserted Data Successfully Deleted All", userRepository.findAll().size(), is(0));
+		assertThat("User Data Access Code Inserted Data Successfully Deleted All", userRepository.findAll().size(),
+				is(0));
 	}
 
 	@Test
-	public void checkPutOne(){
-		Users user= userRepository.findByUsername("ui");
-		 user.setTeam("numberOne");
- 		userRepository.save(user);
+	public void checkPutOne() {
+		UserDAO user = userRepository.findByUsername("ui");
+		user.setTeam("numberOne");
+		userRepository.update(user);
 		assertThat("User Data Access Code Inserted Data Successfully Put One", userRepository.findAll().size(), is(3));
-		assertThat("User Data Access Code Inserted Data Successfully Put One", userRepository.findByUsername("ui").getTeam(), is("numberOne"));
+		assertThat("User Data Access Code Inserted Data Successfully Put One",
+				userRepository.findByUsername("ui").getTeam(), is("numberOne"));
 	}
-	
+
 }

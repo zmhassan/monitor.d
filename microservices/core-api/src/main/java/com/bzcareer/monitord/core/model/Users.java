@@ -42,7 +42,21 @@ public class Users {
 
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", username=" + username + ", password=" + password + ", team=" + team + "]";
+		return "Users [id=" + getId() + ", username=" + username + ", password=" + password + ", team=" + team + "]";
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void update(UserDAO usersDao) {
+		this.username = usersDao.getUsername();
+		this.password = usersDao.getPassword();
+		this.team = usersDao.getTeam();
 	}
 
 }
