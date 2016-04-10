@@ -1,0 +1,24 @@
+spring:
+    profiles: dev
+server:
+    port: 8080
+
+---
+
+spring:
+    profiles: integration
+    data.mongodb.uri: mongodb://192.168.99.100:27017/mydb
+server:
+    port: 8181
+#  spring:
+#    profiles: integration
+# use local or embedded mongodb at localhost:27017
+#  server:
+#    port: 8080
+#
+#  spring:
+#    profiles: production
+#  spring:
+#    data.mongodb.uri: mongodb://<user>:<passwd>@<url>:<port>/<dbname>
+#  server:
+#    port: 8181

@@ -1,9 +1,28 @@
-frontend:
-  image: google/nodejs
-  volumes:
-    - ./web:/app/
-  working_dir: /app/
-  command: npm start
-  ports:
-    - "8080:8080"
+version: '2'
 
+services:
+  ui:
+    image: google/nodejs
+    volumes:
+      - ./web:/app/
+    working_dir: /app/
+    command: npm start
+    ports:
+      - "8080:8080"
+
+  coreapi:
+    image: java:8-jdk-alpine
+    volumes:
+      - ./microservices/core-api/target/:/app/
+    working_dir: /app/
+    command: java -jar  -Dspring.profiles.active=integration   /app/mond-core-1.0.0-SNAPSHOT.jar
+    ports:
+      - "8181:8181"
+    links:
+      - database
+  database:
+    image: mongo
+    volumes:
+      - /data/db
+    ports:
+      - "27017:27017"
