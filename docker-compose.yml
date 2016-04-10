@@ -1,8 +1,9 @@
-api:
-  image: dockerfile/nodejs
+frontend:
+  image: google/nodejs
   volumes:
-    - ./app/:/app/
+    - ./web:/app/
   working_dir: /app/
   command: npm start
   ports:
     - "8080:8080"
+
