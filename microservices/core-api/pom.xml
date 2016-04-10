@@ -8,7 +8,7 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>mond-core-services</name>
+	<name>BZCareer :: Monitor.D :: Core Api</name>
 	<description>Core Web Services for Monitor D</description>
 
 	<parent>
