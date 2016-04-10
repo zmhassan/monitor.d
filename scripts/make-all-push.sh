@@ -13,4 +13,4 @@ docker   build   -t  bzcareer/monitord-core-services  ../microservices/core-api
 docker   build   -t  bzcareer/monitord  ../web
 # Pushing containers up to docker hub
 docker push bzcareer/monitord
-docker push bzcareer/monitord-core-services
+docker push bzcareer/monitord-core-api
