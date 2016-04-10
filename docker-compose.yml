@@ -1,8 +1,0 @@
-api:
-  image: dockerfile/nodejs
-  volumes:
-    - ./app/:/app/
-  working_dir: /app/
-  command: npm start
-  ports:
-    - "8080:8080"
