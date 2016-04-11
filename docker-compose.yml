@@ -3,6 +3,7 @@ version: '2'
 services:
   ui:
     image: google/nodejs
+    container_name: monitor-d-frontend
     volumes:
       - ./web:/app/
     working_dir: /app/
@@ -12,6 +13,7 @@ services:
 
   coreapi:
     image: java:8-jdk-alpine
+    container_name: monitor-d-core-api
     volumes:
       - ./microservices/core-api/target/:/app/
     working_dir: /app/
@@ -22,6 +24,7 @@ services:
       - database
   database:
     image: mongo
+    container_name: monitor-d-database
     volumes:
       - /data/db
     ports:
