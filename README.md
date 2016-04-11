@@ -1,4 +1,7 @@
+[![Build Status](https://travis-ci.org/BZCareer/monitor.d.svg?branch=master)](https://travis-ci.org/BZCareer/monitor.d)
+
 ##  Problem
+
 Infrastructure setup is difficult in large organizations and they tend to delay projects.  Sometimes there are lots of approval steps to get to production.
 
 In programming we learn the concept of do not repeat yourself. Often times when deploying application it requires developers to explain the process over and over. Sometimes software  requires maintenance and only one person knows how to maintain or deploy something. In the technology space when competition releases a feature, how fast can you catch up? Will it take a week, month or a year. By following devops principles its supposed to reduce the time it takes to go from development to production.
