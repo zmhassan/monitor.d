@@ -21,30 +21,28 @@ new Morris.Line({
   // chart.
   labels: ['Value']
 });
-    
-    
+
+
     Morris.Donut({
   element: 'donut-example1',
   data: [
-    {label: "Used", value: 30},
-    {label: "Remaining", value: 70}
+    {label: "Used CPU", value: 30},
+    {label: "Remaining CPU", value: 70}
   ]
 });
     Morris.Donut({
   element: 'donut-example2',
   data: [
-    {label: "Download Sales", value: 12},
-    {label: "In-Store Sales", value: 30},
-    {label: "Mail-Order Sales", value: 20}
+    {label: "Used Memory", value: 95},
+    {label: "Remaining Memory", value: 5}
   ]
 });
-    
+
     Morris.Donut({
   element: 'donut-example3',
   data: [
-    {label: "Download Sales", value: 12},
-    {label: "In-Store Sales", value: 30},
-    {label: "Mail-Order Sales", value: 20}
+    {label: "Used Disk Space", value: 50},
+    {label: "Remaining Disk Space", value: 50}
   ]
 });
 
@@ -59,8 +57,8 @@ new Morris.Line({
       <span class="blue-text text-darken-2">
          <div id="myfirstchart" style="height: 250px;"></div>
 
-         
-         
+
+
          </span>
     </div>
             </div>
@@ -72,7 +70,7 @@ new Morris.Line({
 <div class="btn-group" role="group" aria-label="...">
     <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-cloud"></i></button>
     <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-cloud"></i></button>
-    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-cloud"></i></button>  
+    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-cloud"></i></button>
     <i class="fa fa-spinner fa-spin"></i>
 <i class="fa fa-circle-o-notch fa-spin"></i>
 <i class="fa fa-refresh fa-spin"></i>
@@ -91,7 +89,7 @@ new Morris.Line({
           <div id="donut-example3" ></div>
                </div>
           </div>
-         
+
          </span>
     </div>
             </div>
@@ -99,12 +97,12 @@ new Morris.Line({
             <br><br><br>
      <div class="card-panel">
       <span class="blue-text text-darken-2">
-          
+
           <div class="row">
   <div class="col-md-4">
-      
-      
-      
+
+
+
       <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">Deployment Status</div>
@@ -115,58 +113,7 @@ new Morris.Line({
       <th>Job</th>
       <th>Status</th>
       <th>Date</th>
-      
-      </tr>
-      <tr>
-      <td>....</td>
-      <td>....</td>
-      <td>....</td>
-      </tr>
-       <tr>
-      <td>....</td>
-      <td>....</td>
-      <td>....</td>
-      </tr>
-       <tr>
-      <td>....</td>
-      <td>....</td>
-      <td>....</td>
-      </tr>
-       <tr>
-      <td>....</td>
-      <td>....</td>
-      <td>....</td>
-      </tr>
-       <tr>
-      <td>....</td>
-      <td>....</td>
-      <td>....</td>
-      </tr>
-       <tr>
-      <td>....</td>
-      <td>....</td>
-      <td>....</td>
-      </tr>
-  </table>
-</div>
-<a href="#" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span> View All</a>  
-              
-  </div>
-  <div class="col-md-4">
-      
-      
-      
-      <div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Deployment Status</div>
 
-  <!-- Table -->
-  <table class="table">
-  <tr>
-      <th>Job</th>
-      <th>Status</th>
-      <th>Date</th>
-      
       </tr>
       <tr>
       <td>....</td>
@@ -201,11 +148,12 @@ new Morris.Line({
   </table>
 </div>
 <a href="#" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span> View All</a>
-              
-  </div><div class="col-md-4">
-      
-      
-      
+
+  </div>
+  <div class="col-md-4">
+
+
+
       <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">Deployment Status</div>
@@ -216,7 +164,57 @@ new Morris.Line({
       <th>Job</th>
       <th>Status</th>
       <th>Date</th>
-      
+
+      </tr>
+      <tr>
+      <td>....</td>
+      <td>....</td>
+      <td>....</td>
+      </tr>
+       <tr>
+      <td>....</td>
+      <td>....</td>
+      <td>....</td>
+      </tr>
+       <tr>
+      <td>....</td>
+      <td>....</td>
+      <td>....</td>
+      </tr>
+       <tr>
+      <td>....</td>
+      <td>....</td>
+      <td>....</td>
+      </tr>
+       <tr>
+      <td>....</td>
+      <td>....</td>
+      <td>....</td>
+      </tr>
+       <tr>
+      <td>....</td>
+      <td>....</td>
+      <td>....</td>
+      </tr>
+  </table>
+</div>
+<a href="#" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span> View All</a>
+
+  </div><div class="col-md-4">
+
+
+
+      <div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Deployment Status</div>
+
+  <!-- Table -->
+  <table class="table">
+  <tr>
+      <th>Job</th>
+      <th>Status</th>
+      <th>Date</th>
+
       </tr>
       <tr>
       <td>....</td>
@@ -252,15 +250,15 @@ new Morris.Line({
 
               </div>
 <a href="#" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span> View All</a>
-              
+
   </div>
 </div>
 
-         
-         
-       
-         
-         
+
+
+
+
+
          </span>
     </div>
             </div>

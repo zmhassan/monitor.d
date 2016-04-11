@@ -22,9 +22,9 @@
   <!-- Compiled and minified CSS
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css"> -->
 
-  <!-- Compiled and minified JavaScript 
+  <!-- Compiled and minified JavaScript
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>-->
-          
+
 </head>
 <body>
 <div class="row">
@@ -34,25 +34,26 @@
 
 Monitor<small>.D</small></h2>    <!--<img src="imgs/logo.png" alt="image of logo" style="width:204px;height:48px;">-->
        </div>
-     
+
  </nav>
     </div>
 <div class="row">
+
   <div class="col-md-2">
-    
-    
+
+
     <div id="sidebar-wrapper">
-        
+
         <div class="list-group">
             <br><br><br>
-  <a class="list-group-item" href="#"><i class="fa fa-tachometer fa-fw"></i>&nbsp; Dashboard</a>
-  <a class="list-group-item" href="#"><i class="fa fa-cubes fa-fw"></i>&nbsp; Kube Containers</a>
-  <a class="list-group-item" href="#"><i class="fa fa-pie-chart fa-fw"></i>&nbsp; OS Metrics</a>
-  <a class="list-group-item" href="#"><i class="fa fa-mixcloud fa-fw"></i>&nbsp; Cloud Admin</a>
-  <a class="list-group-item" href="#"><i class="fa fa-paper-plane fa-fw"></i>&nbsp; Deployments</a>
-  <a class="list-group-item" href="#"><i class="fa fa-search fa-fw"></i>&nbsp; Log Search</a>
-  <a class="list-group-item" href="#"><i class="fa fa-envelope fa-fw"></i>&nbsp; Notification   <span class="badge">3</span></a>
-  <a class="list-group-item" href="#"><i class="fa fa-cogs fa-fw"></i>&nbsp; Settings</a>
+  <a href="/#/dashboard" class="list-group-item" href="#"><i class="fa fa-tachometer fa-fw"></i>&nbsp; Dashboard</a>
+  <a href="/#/kubeadmin" class="list-group-item" href="#"><i class="fa fa-cubes fa-fw"></i>&nbsp; Kube Containers</a>
+  <a href="/#/osmetrics" class="list-group-item" href="#"><i class="fa fa-pie-chart fa-fw"></i>&nbsp; OS Metrics</a>
+  <a href="/#/cloudadmin" class="list-group-item" href="#"><i class="fa fa-mixcloud fa-fw"></i>&nbsp; Cloud Admin</a>
+  <a href="/#/deployments" class="list-group-item" href="#"><i class="fa fa-paper-plane fa-fw"></i>&nbsp; Deployments</a>
+  <a href="/#/logsearch" class="list-group-item" href="#"><i class="fa fa-search fa-fw"></i>&nbsp; Log Search</a>
+  <a href="/#/inbox" class="list-group-item" href="#"><i class="fa fa-envelope fa-fw"></i>&nbsp; Notification   <span class="badge">3</span></a>
+  <a href="/#/settings" class="list-group-item" href="#"><i class="fa fa-cogs fa-fw"></i>&nbsp; Settings</a>
 </div>
         <!--<ul class="sidebar-nav">
                 <li>
@@ -61,7 +62,7 @@ Monitor<small>.D</small></h2>    <!--<img src="imgs/logo.png" alt="image of logo
 
                 </li>
                 <li class="space-side">
-                   
+
                 </li>
                 <li class="space-side">
                     <i class="fa fa-cubes fa-3x"></i>
@@ -80,28 +81,32 @@ Monitor<small>.D</small></h2>    <!--<img src="imgs/logo.png" alt="image of logo
                 </li>
             </ul>-->
         </div>
-      
-      
+
+
     </div>
+    <br><br><br>
+    <br><br><br>
+
   <div class="col-md-9">
+
      <div ng-view></div>
 
-  <div>Angular seed app: v<span app-version></span></div>
-    
-    
+<!--  <div>Angular seed app: v<span app-version></span></div>
+-->
+
     </div>
 </div>
-  
-       
-    
+
+
+
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
- 
 
-   
+
+
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
@@ -110,6 +115,16 @@ Monitor<small>.D</small></h2>    <!--<img src="imgs/logo.png" alt="image of logo
   <script src="app.js"></script>
   <script src="view1/view1.js"></script>
   <script src="view2/view2.js"></script>
+  <script src="Settings/settings.js"></script>
+  <script src="OSMetrics/osmetrics.js"></script>
+  <script src="Logsearch/logsearch.js"></script>
+  <script src="Login/login.js"></script>
+  <script src="Kubecontainer/kubeadmin.js"></script>
+  <script src="Inbox/inbox.js"></script>
+  <script src="Dashboard/dashboard.js"></script>
+  <script src="Deployments/deployments.js"></script>
+  <script src="CloudAdmin/cloudadmin.js"></script>
+
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
