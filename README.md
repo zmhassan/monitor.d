@@ -49,9 +49,9 @@ Frontend:  ``` https://hub.docker.com/r/bzcareer/monitord/ ```
 Backend:  ``` https://hub.docker.com/r/bzcareer/monitord-core-api/ ```
 
 
-## Starting up backend and ui:
+## Use /bin to Start/Stop full containerized app (with backend/db/frontend/proxy):
 
-```./script/start.sh```
+./bin/start.sh
 
 Starts 4 containers:
 
@@ -62,7 +62,7 @@ Starts 4 containers:
 
 To stop containers running:
 
-```./script/stop.sh```
+./bin/stop.sh
 
 You will be able to see the ui running on the same ip as your DOCKER_HOST
 
