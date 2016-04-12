@@ -1,27 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Manage Users - Admin Panel</title>
-<jsp:include page="includes/static_includes.jsp" />
-<script type="text/javascript" src="views_ajax_requests/manageUsersAJAX.js"></script>
-</head>
-<body class="body-inner">
-	<div class="btn-toolbar btn-mobile-menus">
-		<button class="btn btn-main-menu"></button>
-		<button class="btn btn-user-menu">
-			<i class="icon-logo"></i>
-		</button>
-	</div>
-	<!-- Navigation starts -->
-	<jsp:include page="includes/navigation-template.jsp" />
 	<!-- Navigation end -->
 	<script>
     $(function(){
         setTimeout(function(){
             $('.nav-fixed-topright').removeAttr('style');
         }, 300);
-        
+
         $(window).scroll(function(){
             if($('.breadcrumb-container').length){
                 var scrollState = $(window).scrollTop();
@@ -52,7 +35,7 @@
             }
         });
     });
-											
+
 
 </script>
 	<div class="wrapper">
@@ -105,38 +88,35 @@ td {
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${allUsers }" var="users">
 									<tr>
 
-										<td>${users.getId() }</td>
+										<td>......</td>
 
-										<td>${users.getUsername() }</td>
-										
-										<td>${users.accessLevel.getAccessName() }</td>
+										<td>.....</td>
+
+										<td>......</td>
 										<td class="align">
 											 <a
-											 	class="bootstrap-tooltip" data-original-title="Update" 
-												onclick="updateForm('${users.getId() }', '${users.getUsername() }',
-													'${users.accessLevel.getAccessId()}' )"
+											 	class="bootstrap-tooltip" data-original-title="Update"
+												onclick="updateForm()"
 												data-toggle="modal" data-target="#updateUserModal">
 												<i class="icon-edit"></i>
 											</a>
-											
+
 											<a
 												class="bootstrap-tooltip" data-original-title="Suspend"
-												onclick="suspendUser('${users.getId() }', ' ${users.getUsername() } ')">
+												onclick="suspendUser()">
 												<i class="icon-warning-sign"></i>
 											</a>
-											
+
 											<a
 												class="bootstrap-tooltip" data-original-title="Delete"
-												onclick="deleteForm('${users.getId() }', ' ${users.getUsername() } ')"
+												onclick="deleteForm()"
 												data-toggle="modal" data-target="#deleteModal">
 												<i class="icon-trash"></i>
 											</a>
 										</td>
 									</tr>
-								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -168,7 +148,7 @@ td {
 
 						   //                                dropdownCssClass: 'noSearch'
 
-						   //                            }); 
+						   //                            });
 
 					   });
 
@@ -205,9 +185,7 @@ td {
 							<div class="input-group">
 								<span class="input-group-addon">Access Level:</span> <br /> <select
 									class="form-control" id="accessLevel" name="Access Level">
-									<c:forEach items="${allRoles }" var="roles">
-									<option value="${roles.getAccessId() }">${roles.getAccessName() }</option>
-									</c:forEach>
+									<option value="1">1</option>
 								</select>
 							</div>
 							<button type="button" class="btn btn-default"
@@ -248,9 +226,7 @@ td {
 							<div class="input-group">
 								<span class="input-group-addon">Access Level:</span> <br /> <select
 									class="form-control" id="up_accessLevel" name="Access Level">
-							<c:forEach items="${allRoles }" var="roles">
-									<option value="${roles.getAccessId() }">${roles.getAccessName() }</option>
-									</c:forEach>
+									<option value="1">1</option>
 								</select>
 							</div>
 							<button type="button" class="btn btn-default"
@@ -268,7 +244,7 @@ td {
 		<!--  END OF UPDATE MODAL -->
 
 		<!--  BEGIN DELETE MODAL -->
-		
+
 		<div id="deleteModal" class="modal hide fade">
 			<input type="hidden" id="del_userId" name="User id" />
 			<input type="hidden" id="del_username" />
@@ -285,9 +261,7 @@ td {
                 	onclick="deleteUser()">Yes</a>
             </div>
         </div>
-		
+
 		<!--  END DELETE MODAL -->
-		
+
 	</div>
-</body>
-</html>
