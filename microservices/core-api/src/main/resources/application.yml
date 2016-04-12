@@ -1,15 +1,15 @@
 spring:
     profiles: dev
 server:
-    port: 8080
+    port: 8181
 
 ---
 
 spring:
     profiles: integration
+#    data.mongodb.uri: mongodb://localhost:27017/mydb
 server:
     port: 8181         # Note: Change ip below to the correct mongodb ip address.
-    data.mongodb.uri: mongodb://192.168.99.100:27017/mydb
 
 #  spring:
 #    profiles: integration
