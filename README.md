@@ -17,6 +17,66 @@ Yes, but looking at the components I was planning on building I don’t see a si
 This project is not ready yet. Currently there is no release yet of this project. It's still in development but I will send out a tweet when its ready for use.
 
 
+## Building UI:
+
+```bash
+cd web;
+npm install;
+npm start
+```
+Navigate to http://localhost:8080
+
+
+## Building Backend:
+```
+
+mvn clean install
+# Note: You will have to have mongodb running on localhost.
+
+```
+
+## Continuous Integration:
+
+When code pull requests are sent test will run from Travis-ci:
+
+```  https://travis-ci.org/BZCareer/monitor.d  ```
+
+## Docker Images Are on Docker Hub:
+
+Not ready yet.
+
+Frontend:  ``` https://hub.docker.com/r/bzcareer/monitord/ ```
+Backend:  ``` https://hub.docker.com/r/bzcareer/monitord-core-api/ ```
+
+
+## Starting up backend and ui:
+
+```./script/start.sh```
+
+Starts 4 containers:
+
+*  Nginx
+*  MongoDB
+*  Frontend
+*  Backend
+
+To stop containers running:
+
+```./script/stop.sh```
+
+You will be able to see the ui running on the same ip as your DOCKER_HOST
+
+http://$DOCKER_HOST:80/
+
+### Backend:
+http://$DOCKER_HOST:80/api
+
+### Debugging:
+To verify if the backend is up and running visit:
+
+http://$DOCKER_HOST:80/health  
+
+
 ## UI Mockup:
 
 ![alt tag](https://raw.githubusercontent.com/BZCareer/monitor.d/master/MonitorD-Dash.png)
