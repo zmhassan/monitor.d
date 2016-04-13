@@ -33,7 +33,8 @@ import com.bzcareer.monitord.core.services.UserService;
  * 
  * @author Zak Hassan
  */
-@RestController("/api/users")
+@RestController
+@RequestMapping("/api/users")
 public class UserController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
