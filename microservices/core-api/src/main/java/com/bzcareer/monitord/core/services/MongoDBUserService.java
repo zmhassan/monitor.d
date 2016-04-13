@@ -20,7 +20,6 @@ public class MongoDBUserService implements UserService {
 	@Override
 	public UserDAO create(UserDAO userDAO) {
 		Users user = repo.save(new Users(userDAO.getUsername(), userDAO.getPassword(), userDAO.getTeam()));
-		
 		return new UserDAO(user);
 	}
 

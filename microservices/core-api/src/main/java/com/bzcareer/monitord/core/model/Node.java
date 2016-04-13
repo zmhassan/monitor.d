@@ -9,6 +9,8 @@ public class Node {
 	private String serverName;
 	private String serverIp;
 
+	public Node() { }
+	
 	public Node(String id, String serverName, String serverIp) {
 		this.id = id;
 		this.serverName = serverName;
