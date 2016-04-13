@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.bzcareer.monitord.core.model.Node;
 import com.bzcareer.monitord.core.model.NodeDAO;
-import com.bzcareer.monitord.core.model.UserDAO;
-import com.bzcareer.monitord.core.model.Users;
 import com.bzcareer.monitord.core.repository.NodeRepository;
 
 @Service
@@ -21,8 +19,11 @@ public class MongoDBNodeService implements NodeService {
 
 	@Override
 	public NodeDAO create(NodeDAO nodeDAO) {
-		Node node = repo.save(new Node(nodeDAO.getId(), nodeDAO.getServerName(), nodeDAO.getServerIp()));
-		return new NodeDAO(node);
+		Node node = new Node();
+		node.setServerIp(nodeDAO.getServerIp());
+		node.setServerName(nodeDAO.getServerName());
+		Node saved = repo.save(node);
+		return new NodeDAO(saved);
 	}
 
 	@Override

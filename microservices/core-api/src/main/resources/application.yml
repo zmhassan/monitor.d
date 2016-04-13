@@ -7,9 +7,9 @@ server:
 
 spring:
     profiles: integration
-#    data.mongodb.uri: mongodb://localhost:27017/mydb
+    #data.mongodb.uri: mongodb://localhost:27017/mydb
 server:
-    port: 8181         # Note: Change ip below to the correct mongodb ip address.
+    port: 8181         # Note: use this command to run mongo 'docker run -d -p 27017:27017 mongo'
 
 #  spring:
 #    profiles: integration

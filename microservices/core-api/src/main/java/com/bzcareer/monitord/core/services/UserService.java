@@ -3,7 +3,6 @@ package com.bzcareer.monitord.core.services;
 import java.util.List;
 
 import com.bzcareer.monitord.core.model.UserDAO;
-import com.bzcareer.monitord.core.model.Users;
 
 public interface UserService {
 
