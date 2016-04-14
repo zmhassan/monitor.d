@@ -22,3 +22,7 @@ sudo pip install docker-compose
 sudo dnf install npm
 
 sudo npm install -g http-server
+sudo npm install -g json
+
+export MON_IP="192.168.33.10"
+export INIT_MONGO_IP="spring.data.mongodb.uri=mongodb://$MON_IP:27017/mydb"

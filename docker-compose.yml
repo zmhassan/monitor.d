@@ -1,23 +1,13 @@
 version: '2'
 
 services:
-  nginx:
-    image: nginx
-    volumes:
-      - ./config/nginx.conf:/etc/nginx/nginx.conf
-    links:
-      - ui
-      - coreapi
-      - db
-    ports:
-      - "80:80"
   ui:
     image: google/nodejs
     container_name: monitor-d-frontend
     volumes:
       - ./web:/app/
-    working_dir: /app/
-    command: npm start
+    working_dir: /app
+    command: bash -c "npm install http-server -g &&  npm start"
     ports:
       - "8080:8080"
   coreapi:
@@ -29,10 +19,12 @@ services:
     ports:
       - "8181:8181"
     links:
-      - db:db
-  db:
+      - mongo
+    depends_on:
+      - mongo
+  mongo:
     image: mongo
-    container_name: db
+    container_name: mongo
     volumes:
       - /data/db
     ports:
