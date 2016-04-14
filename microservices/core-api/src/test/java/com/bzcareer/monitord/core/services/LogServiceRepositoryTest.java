@@ -2,6 +2,7 @@ package com.bzcareer.monitord.core.services;
 
  
 
+
 //import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
@@ -16,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.bzcareer.monitord.core.config.MondCoreServicesApplication;
-import com.bzcareer.monitord.core.model.NodeDAO;
+import com.bzcareer.monitord.core.model.LogDAO;
 
 /**
  * Provided unit test to check that the data was inserted properly.
@@ -26,17 +27,17 @@ import com.bzcareer.monitord.core.model.NodeDAO;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = MondCoreServicesApplication.class)
 @WebAppConfiguration
-public class NodeRepositoryTest {
+public class LogServiceRepositoryTest {
 
 	@Autowired
-	public NodeService service;
+	public LogService service;
 
 	@Before
 	public void bootStrap() {
-		service.deleteAll();
-		service.create(new NodeDAO("google.com", "10.0.0.1"));
-		service.create(new NodeDAO("yahoo.com", "10.3.4.6"));
-		service.create(new NodeDAO("bing.com", "10.2.3.4"));
+		service.deleteAll(); //(String appName, String start, String end) {
+		service.create(new LogDAO("fraud-service", "2014-10-20_20:12:00","2013-03-20_20:12:00" ));
+		service.create(new LogDAO("audit-service", "2013-12-20_20:42:00","2014-03-20_20:12:00" ));
+		service.create(new LogDAO("add-service", "2011-03-22_23:42:00","2013-12-20_20:12:00" ));
 	}
 
 	@Test
@@ -51,11 +52,11 @@ public class NodeRepositoryTest {
 
  	@Test
 	public void checkingForWrongDataInserted() {
-		NodeDAO nodeDAO = service.findAll().get(0);
-		nodeDAO.setServerName("docker.com");
+		LogDAO nodeDAO = service.findAll().get(0);
+		nodeDAO.setAppName("wrong-name");
 		service.update(nodeDAO);
-		assertThat("Wrong Valid Data Is Correct", service.findById(nodeDAO.getId()).getServerName(),
-				is("docker.com"));
+		assertThat("Wrong Valid Data Is Correct", service.findById(nodeDAO.getId()).getAppName(),
+				is("wrong-name"));
 	}
 
 	@Test

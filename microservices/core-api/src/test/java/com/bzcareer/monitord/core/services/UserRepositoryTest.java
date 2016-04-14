@@ -1,21 +1,21 @@
 package com.bzcareer.monitord.core.services;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.web.WebAppConfiguration;
-import com.bzcareer.monitord.core.config.MondCoreServicesApplication;
-import com.bzcareer.monitord.core.model.UserDAO;
-import com.bzcareer.monitord.core.model.Users;
-import com.bzcareer.monitord.core.repository.UserRepository;
 //import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.nullValue;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+
+import com.bzcareer.monitord.core.config.MondCoreServicesApplication;
+import com.bzcareer.monitord.core.model.UserDAO;
 
 /**
  * Provided unit test to check that the data was inserted properly.
