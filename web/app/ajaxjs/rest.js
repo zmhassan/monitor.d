@@ -11,33 +11,28 @@
  
 
 (function(_){
-	
-   
-    
-    _.growl= (function( gtitle, gtype, gtext ){
-        $.pnotify({
-                    title : gtitle, //'New Access Level Added',
-                    type : gtype, //'info',
-                    text : gtext //'Access Level ' + document.getElementById('permission_name').value + ' has been added'
+	 
+    // @usage: growl("Listen","Emergency4");
+    _.growl= (function( gtitle, gtext ){
+        new PNotify({
+            title: gtitle,  
+            text: gtext
         });
     });
     // @param apiurl    -    http://localhost:8080/api/logs
     // @param action    -    "POST" / "GET" / "DELETE"
     // @param callback  -    function(data) { }
     // @param payload   -    {"name": "zak",  .... }
-    //
-    _.reqJson =(function( apiurl, action, payload, callback ){   
-    
-        $.ajax({
-				type: action,   //  "POST",
-				url:  apiurl,   //  "api/permission",
-				data: payload,  //  { permission_name: document.getElementById("permission_name").value },
+    // @usage    getJSON("http://localhost:8080/api/logs","GET", null, function(data){ console.dir(data); });
+ var getJSON= function( apiurl, action, payload, callback ){ $.ajax({
+				type: action,    
+				url:  apiurl,
+                data: payload,
 				dataType: "json",
 				cache: false,
-				success : callback  // function(data){}
-        });
-        
-    })();
+				success : callback
+        }); } 
+    
     
     // May decide to delete this.
     

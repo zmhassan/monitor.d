@@ -7,7 +7,7 @@ services:
     volumes:
       - ./web:/app/
     working_dir: /app
-    command: bash -c "npm install http-server -g &&  npm start"
+    command: npm start
     ports:
       - "8080:8080"
   coreapi:
