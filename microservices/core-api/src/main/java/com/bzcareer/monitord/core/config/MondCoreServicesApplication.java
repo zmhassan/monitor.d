@@ -1,6 +1,5 @@
 package com.bzcareer.monitord.core.config;
 
-import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
