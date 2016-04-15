@@ -7,4 +7,4 @@ export MON_IP="192.168.33.10"
 
 export INIT_MONGO_IP="spring.data.mongodb.uri=mongodb://$MON_IP:27017/mydb"
 
-docker-compose -f ../docker-compose.yml  up -d
+docker-compose    -f    /vagrant/docker-compose.yml    up    -d
