@@ -26,6 +26,7 @@ public class MongoDBNotificationService implements NotificationService {
 	@Override
 	public NotificationDAO delete(String id) {
 		Notification Notification = repo.findOne(id);
+		repo.delete(id);
 		return new NotificationDAO(Notification);
 	}
 

@@ -30,6 +30,7 @@ public class MongoLogService implements LogService{
 	@Override
 	public LogDAO delete(String id) {
 		Log log =  repo.findOne(id);
+		repo.delete(id);
 		return new LogDAO(log);
 	}
  

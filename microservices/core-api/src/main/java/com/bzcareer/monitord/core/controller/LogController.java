@@ -31,7 +31,7 @@ public class LogController {
 		this.service = service;
 	}
 
-	@RequestMapping(path="/",method = RequestMethod.GET)
+	@RequestMapping( method = RequestMethod.GET)
 	public List<LogDAO> getAllLogs() {
 		return service.findAll();
 	}
@@ -41,7 +41,7 @@ public class LogController {
 		return service.findById(id);
 	}
 
-	@RequestMapping(path="/",method = RequestMethod.POST)
+	@RequestMapping ( method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public LogDAO createNode(@RequestBody @Valid LogDAO node) {
 		LOGGER.info("Created Log Entry!");

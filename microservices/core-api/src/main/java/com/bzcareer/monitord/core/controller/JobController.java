@@ -31,7 +31,7 @@ public class JobController {
 		this.service = service;
 	}
 
-	@RequestMapping(path="/",method = RequestMethod.GET)
+	@RequestMapping( method = RequestMethod.GET)
 	public List<JobDAO> getAllLogs() {
 		return service.findAll();
 	}
@@ -41,7 +41,7 @@ public class JobController {
 		return service.findById(id);
 	}
 
-	@RequestMapping(path="/",method = RequestMethod.POST)
+	@RequestMapping( method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public JobDAO createNode(@RequestBody @Valid JobDAO job) {
 		LOGGER.info("Created job Entry!");

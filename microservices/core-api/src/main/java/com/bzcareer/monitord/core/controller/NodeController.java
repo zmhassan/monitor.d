@@ -30,7 +30,7 @@ public class NodeController {
 		this.service = service;
 	}
 
-	@RequestMapping(path="/",method = RequestMethod.GET)
+	@RequestMapping( method = RequestMethod.GET)
 	public List<NodeDAO> getAllNodes() {
 		return service.findAll();
 	}
@@ -40,7 +40,7 @@ public class NodeController {
 		return service.findById(id);
 	}
 
-	@RequestMapping(path="/",method = RequestMethod.POST)
+	@RequestMapping( method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public NodeDAO createNode(@RequestBody @Valid NodeDAO node) {
 		LOGGER.info("Created Node!");
