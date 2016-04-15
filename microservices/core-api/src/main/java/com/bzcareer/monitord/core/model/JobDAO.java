@@ -8,7 +8,7 @@ public class JobDAO {
 	String end;
 	String type;
 
-	
+	public JobDAO(){}
 	public JobDAO(String name, String status, String start, String end, String type) {
  		this.name = name;
 		this.status = status;

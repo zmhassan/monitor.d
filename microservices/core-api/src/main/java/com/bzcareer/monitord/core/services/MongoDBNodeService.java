@@ -29,6 +29,7 @@ public class MongoDBNodeService implements NodeService {
 	@Override
 	public NodeDAO delete(String id) {
 		Node node = findNodeById(id);
+		repo.delete(id);
 		return new NodeDAO(node);
 	}
 

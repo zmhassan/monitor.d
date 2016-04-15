@@ -28,6 +28,7 @@ public class MongoDBJobService implements JobService {
 	@Override
 	public JobDAO delete(String id) {
 		Job node = repo.findOne(id);
+		repo.delete(id);
 		return new JobDAO(node);
 	}
 

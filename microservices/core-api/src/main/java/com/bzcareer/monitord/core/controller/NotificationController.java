@@ -31,7 +31,7 @@ public class NotificationController {
 		this.service=service;
 	}
 
-	@RequestMapping(path="/",method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public List<NotificationDAO> getAllInbox() {
 		return service.findAll();
 	}
@@ -41,7 +41,7 @@ public class NotificationController {
 		return service.findById(id);
 	}
 
-	@RequestMapping(path="/",method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public NotificationDAO createNotification(@RequestBody @Valid NotificationDAO inbox) {
 		LOGGER.info("Created alert Entry!");
