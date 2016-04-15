@@ -10,8 +10,8 @@ sudo usermod -aG docker vagrant
 
 sudo systemctl enable docker
 sudo systemctl start docker
-sudo dnf install haproxy -y
-sudo dnf install wget -y
+sudo yum install haproxy -y
+sudo yum install wget -y
 
 # curl https://raw.githubusercontent.com/BZCareer/monitor.d/master/config/haproxy.cfg >> /etc/haproxy/haproxy.cfg
 # sudo systemctl enable haproxy
@@ -22,13 +22,15 @@ sudo docker pull mongo
 sudo docker pull java:8-jdk-alpine
 sudo docker pull google/nodejs
 
+
+# Installing pip :
+curl "https://bootstrap.pypa.io/get-pip.py"  | sudo python   -
 sudo pip install docker-compose
 
-sudo dnf install npm
-
-
+# Tools for Node Development
+sudo yum install npm -y
 sudo npm install -g http-server
 sudo npm install -g json
 
-export MON_IP="192.168.33.10"
+export MON_IP="192.168.33.10" 
 export INIT_MONGO_IP="spring.data.mongodb.uri=mongodb://$MON_IP:27017/mydb"
