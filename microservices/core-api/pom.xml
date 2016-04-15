@@ -44,11 +44,11 @@
 			<scope>test</scope>
 		</dependency>
 
-
+		<!--  Adding docker lib -->
 		<dependency>
-			<groupId>org.neo4j</groupId>
-			<artifactId>neo4j-cypher-compiler-2.1</artifactId>
-			<version>2.1.8</version>
+			<groupId>com.github.docker-java</groupId>
+			<artifactId>docker-java</artifactId>
+			<version>3.0.0-RC4</version>
 		</dependency>
 	</dependencies>
 
@@ -58,8 +58,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
-
 		</plugins>
 	</build>
 
@@ -89,7 +87,7 @@
 					<sourceEncoding>utf-8</sourceEncoding>
 					<minimumTokens>100</minimumTokens>
 					<targetJdk>1.8</targetJdk>
-			 
+
 				</configuration>
 			</plugin>
 		</plugins>
