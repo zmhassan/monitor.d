@@ -1,0 +1,24 @@
+= Monitor.D Core Api
+
+== Overview
+Core api for integrating with monitor.d
+
+=== Version information
+Version: 1.0.0-SNAPSHOT
+
+=== Contact information
+Contact: Zak Hassan <zak.hassan1010@gmail.com
+
+=== URI scheme
+Host: localhost
+BasePath: /
+
+=== Tags
+
+* notification-controller: Notification Controller
+* log-controller: Log Controller
+* user-controller: User Controller
+* node-controller: Node Controller
+* job-controller: Job Controller
+
+
