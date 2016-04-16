@@ -1,143 +1,175 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Monitor.D - Devops Tooling</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
- <link rel="stylesheet" href="app.css">
-   <!--  <link rel="stylesheet" href="css/sidebar.css">-->
-   <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!DOCTYPE html>
+    <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Monitor.D - Devops Tooling</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="app.css">
+       <!--  <link rel="stylesheet" href="css/sidebar.css">-->
+       <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
- <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
- <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
- <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
- <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-  <!-- Compiled and minified CSS
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css"> -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+     <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+     <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+      <!-- Compiled and minified CSS
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css"> -->
 
-  <!-- Compiled and minified JavaScript
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>-->
+      <!-- Compiled and minified JavaScript
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>-->
+<style>
+    a {
+        color: #e9e9e9;
+        text-decoration: none;
+    }
+    
+    hr {
+        width:160px;
+    }
+    
+    
+        </style>
+    </head>
+    <body>
+    <div class="row">
+       <nav class="navbar navbar-inverse navbar-fixed-top">
+         <div class="navbar-brand">
+            <i class="fa fa-desktop" aria-hidden="true"></i>
 
-</head>
-<body>
-<div class="row">
-   <nav class="navbar navbar-default navbar-fixed-top">
-     <div>
-        <h2><i class="fa fa-linux"></i>
+    Monitor<small>.D</small>    <!--<img src="imgs/logo.png" alt="image of logo" style="width:204px;height:48px;">-->
+           </div>
+    <ul class="nav navbar-nav pull-right" id="main-navigation">
+                    <li> <a href="#" class="pull-right"><i class="fa fa-user" aria-hidden="true"></i>
+                        Admin</a></li>
 
-Monitor<small>.D</small></h2>    <!--<img src="imgs/logo.png" alt="image of logo" style="width:204px;height:48px;">-->
-       </div>
+        <li> <a href="/#/settings" class="pull-right"> <i class="fa fa-cog" aria-hidden="true"></i> Settings</a> </li>
+        <li> <a href="#" class="pull-right"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out </a> </li>
+                </ul>
 
- </nav>
-    </div>
-<div class="row">
-
-  <div class="col-md-2">
+     </nav>
 
 
-    <div id="sidebar-wrapper">
 
-        <div class="list-group">
-            <br><br><br>
-  <a href="/#/dashboard" class="list-group-item" href="#"><i class="fa fa-tachometer fa-fw"></i>&nbsp; Dashboard</a>
-  <a href="/#/kubeadmin" class="list-group-item" href="#"><i class="fa fa-cubes fa-fw"></i>&nbsp; Kube Containers</a>
-  <a href="/#/osmetrics" class="list-group-item" href="#"><i class="fa fa-pie-chart fa-fw"></i>&nbsp; OS Metrics</a>
-  <a href="/#/cloudadmin" class="list-group-item" href="#"><i class="fa fa-mixcloud fa-fw"></i>&nbsp; Cloud Admin</a>
-  <a href="/#/deployments" class="list-group-item" href="#"><i class="fa fa-paper-plane fa-fw"></i>&nbsp; Deployments</a>
-  <a href="/#/logsearch" class="list-group-item" href="#"><i class="fa fa-search fa-fw"></i>&nbsp; Log Search</a>
-  <a href="/#/inbox" class="list-group-item" href="#"><i class="fa fa-envelope fa-fw"></i>&nbsp; Notification   <span class="badge">3</span></a>
-  <a href="/#/settings" class="list-group-item" href="#"><i class="fa fa-cogs fa-fw"></i>&nbsp; Settings</a>
-</div>
-        <!--<ul class="sidebar-nav">
-                <li>
-                    <br>
-                    <br>
-
-                </li>
-                <li class="space-side">
-
-                </li>
-                <li class="space-side">
-                    <i class="fa fa-cubes fa-3x"></i>
-                </li>
-                <li class="space-side">
-                    <i class="fa fa-pie-chart fa-3x"></i>
-                </li>
-                <li class="space-side">
-                    <i class="fa fa-bar-chart fa-3x"></i>
-                </li>
-                <li class="space-side">
-                        <i class="fa fa-mixcloud fa-3x"></i>
-                </li>
-                <li class="space-side">
-                    <i class="fa fa-cubes fa-3x"></i>
-                </li>
-            </ul>-->
         </div>
 
 
+        <!-- Body -->
+
+
+        <div class="row">
+          <div class="col-sm-2" style="
+        min-height: 100% !important;
+        background: #222;
+         height: 100%;
+        padding-left: 50px;
+    ">
+
+                <br><br><br><br>
+                        <ul id="sideBarNav" class="list-unstyled" style=" min-height: 1500px ;">
+
+                            <li>
+                            <h4> <a href="/#/dashboard" class=" "><i class="fa fa-tachometer fa-fw"></i>&nbsp; Dashboard </a></h4></li>
+
+                                                      <li><hr></li>
+                        <li>
+  
+                             <h4>       <a href="/#/kubeadmin" class=" "><i class="fa fa-cubes fa-fw"></i>&nbsp; Docker </a></h4>
+                            </li>
+                                                      <li><hr></li>
+                         <li>
+                             <h4>        <a href="/#/osmetrics" class=" "><i class="fa fa-pie-chart fa-fw"></i>&nbsp; OS Metrics</a></h4>
+                            </li>
+                                                      <li><hr></li>
+                         <li>
+
+                             <h4>  <a href="/#/cloudadmin" class=" "><i class="fa fa-mixcloud fa-fw"></i>&nbsp; Cloud Console </a></h4>
+                            </li>
+                                                      <li><hr></li>
+               <li>
+                              <h4>   <a href="/#/deployments" class=" "><i class="fa fa-paper-plane fa-fw"></i>&nbsp; Deployments </a></h4>
+                            </li>
+                                                      <li><hr></li>
+               <li>
+                             <h4>           <a href="/#/logsearch"><i class="fa fa-search fa-fw"></i>&nbsp; Log Search  </a></h4>
+                            </li>
+                                                      <li><hr></li>
+              <li>
+                  <h4> <a href="/#/inbox" class=" "><i class="fa fa-envelope fa-fw"></i>&nbsp;  Inbox   </a></h4>
+               </li>
+<li><hr></li>
+
+              </ul>
+
+            </div>
+
+
+            <div id="mainContent" style="padding-top:100px;">            
+      <div class="col-md-9">
+
+         <div ng-view></div>
+
+    <!--  <div>Angular seed app: v<span app-version></span></div>
+    -->
+
+        </div>
     </div>
-    <br><br><br>
-    <br><br><br>
-
-  <div class="col-md-9">
-
-     <div ng-view></div>
-
-<!--  <div>Angular seed app: v<span app-version></span></div>
--->
-
-    </div>
-</div>
+            
+            
+            
+            
+            </div>
 
 
 
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+
+
+
+      <!--[if lt IE 7]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
 
 
 
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="Settings/settings.js"></script>
-  <script src="OSMetrics/osmetrics.js"></script>
-  <script src="Logsearch/logsearch.js"></script>
-  <script src="Login/login.js"></script>
-  <script src="Kubecontainer/kubeadmin.js"></script>
-  <script src="Inbox/inbox.js"></script>
-  <script src="Dashboard/dashboard.js"></script>
-  <script src="Deployments/deployments.js"></script>
-  <script src="CloudAdmin/cloudadmin.js"></script>
+      <!-- In production use:
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+      -->
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/angular-route/angular-route.js"></script>
+      <script src="app.js"></script>
+      <script src="view1/view1.js"></script>
+      <script src="view2/view2.js"></script>
+      <script src="Settings/settings.js"></script>
+      <script src="OSMetrics/osmetrics.js"></script>
+      <script src="Logsearch/logsearch.js"></script>
+      <script src="Login/login.js"></script>
+      <script src="Kubecontainer/kubeadmin.js"></script>
+      <script src="Inbox/inbox.js"></script>
+      <script src="Dashboard/dashboard.js"></script>
+      <script src="Deployments/deployments.js"></script>
+      <script src="CloudAdmin/cloudadmin.js"></script>
 
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
-</body>
-</html>
+      <script src="components/version/version.js"></script>
+      <script src="components/version/version-directive.js"></script>
+      <script src="components/version/interpolate-filter.js"></script>
+    </body>
+    </html>
