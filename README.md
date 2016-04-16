@@ -21,9 +21,9 @@ This project is not ready yet. Currently there is no release yet of this project
 See build.md
 
 
-## UI Mockup:
+## New UI Mockup:
 
-![alt tag](https://raw.githubusercontent.com/BZCareer/monitor.d/master/MonitorD-Dash.png)
+![alt tag](https://raw.githubusercontent.com/BZCareer/monitor.d/master/Monitor-d-newUI.png)
 
 
 ## Modes:
