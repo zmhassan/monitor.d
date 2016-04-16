@@ -19,12 +19,21 @@ This project is not ready yet. Currently there is no release yet of this project
 
 ## Api Swagger Docs:
 
+```bash
 mvn spring-boot:run
+```
 
 Open Browser and point to:
-`http://localhost:8080/v2/api-docs?group=coreapi`
+
+[ http://localhost:8080/v2/api-docs?group=coreapi link](http://localhost:8080/v2/api-docs?group=coreapi)
 
 
+## Rest Api Docs:
+
+Core Api:
+
+
+[ Api Docs: https://github.com/BZCareer/monitor.d/wiki/Core-Rest-API-Docs link](https://github.com/BZCareer/monitor.d/wiki/Core-Rest-API-Docs).
 
 
 ## For Builds:
