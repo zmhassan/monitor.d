@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import static springfox.documentation.builders.PathSelectors.regex;
 
 import com.bzcareer.monitord.core.model.JobDAO;
 import com.bzcareer.monitord.core.model.LogDAO;
@@ -18,9 +20,16 @@ import com.bzcareer.monitord.core.services.NodeService;
 import com.bzcareer.monitord.core.services.NotificationService;
 import com.bzcareer.monitord.core.services.UserService;
 
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @ComponentScan(basePackages = { "com.bzcareer.monitord.core.controller", "com.bzcareer.monitord.core.model",
 		"com.bzcareer.monitord.core.repository", "com.bzcareer.monitord.core.services" })
 @SpringBootApplication
+@EnableSwagger2
 @EnableMongoRepositories(basePackages = { "com.bzcareer.monitord.core.repository" })
 public class MondCoreServicesApplication implements CommandLineRunner {
 
@@ -32,55 +41,57 @@ public class MondCoreServicesApplication implements CommandLineRunner {
 	public JobService jobService;
 	@Autowired
 	public LogService logService;
-
 	@Autowired
 	public NodeService nodeService;
 
-	 
+ 	@Bean
+	public Docket coreApi() {
+		return new Docket(DocumentationType.SWAGGER_2)
+			        .groupName("coreapi")
+			        .apiInfo(new ApiInfoBuilder().title("Monitor.D Core Api")
+			        .description("Core api for integrating with monitor.d")
+			        .contact("Zak Hassan <zak.hassan1010@gmail.com")
+			        .version("1.0.0-SNAPSHOT")
+			        .build())
+			        .select()
+				.apis(RequestHandlerSelectors.any())
+				.paths(regex("/api.*")) 
+				.build();
+
+	}
+ 
 	public static void main(String[] args) {
 		SpringApplication.run(MondCoreServicesApplication.class, args);
 	}
 
 	/**
-	   
-	   These method will initialize the database with mock data and let me serve up the ui with this data.
-	   To test ui visit:
-	   "http://localhost:8080/api/jobs" 
-	   "http://localhost:8080/api/logs"
-	   "http://localhost:8080/api/nodes"
-	   "http://localhost:8080/api/alerts"
-	   "http://localhost:8080/api/users"
-	   
-	   
-	   curl -XDELETE 'http://localhost:8080/api/jobs/57103fb98484782bdec0f796'
-	   curl -XPUT localhost:8080/api/jobs/57103fb98484782bdec0f796 -d '{
-	   		"id": "57103fb98484782bdec0f796",
-			"name": "apache-spark",
-			"status": "SUCCESS",
-			"start": "2014-10-20_20:12:00",
-			"end": "2013-03-20_20:12:00",
-			"type": "server-provision"
-	}' -H "Content-Type: application/json"
-	  
-	  curl -XPOST 'localhost:8080/api/jobs' -d '{
-			"name": "testing",
-			"status": "success",
-			"start": "2014-10-20_20:12:00",
-			"end": "2013-03-20_20:12:00",
-			"type": "server-provision"
-	}' -H "Content-Type: application/json"
+	 * 
+	 * These method will initialize the database with mock data and let me serve
+	 * up the ui with this data. To test ui visit:
+	 * "http://localhost:8080/api/jobs" "http://localhost:8080/api/logs"
+	 * "http://localhost:8080/api/nodes" "http://localhost:8080/api/alerts"
+	 * "http://localhost:8080/api/users"
+	 * 
+	 * 
+	 * curl -XDELETE 'http://localhost:8080/api/jobs/57103fb98484782bdec0f796'
+	 * curl -XPUT localhost:8080/api/jobs/57103fb98484782bdec0f796 -d '{ "id":
+	 * "57103fb98484782bdec0f796", "name": "apache-spark", "status": "SUCCESS",
+	 * "start": "2014-10-20_20:12:00", "end": "2013-03-20_20:12:00", "type":
+	 * "server-provision" }' -H "Content-Type: application/json"
+	 * 
+	 * curl -XPOST 'localhost:8080/api/jobs' -d '{ "name": "testing", "status":
+	 * "success", "start": "2014-10-20_20:12:00", "end": "2013-03-20_20:12:00",
+	 * "type": "server-provision" }' -H "Content-Type: application/json"
 	 **/
 	@Override
 	public void run(String... arg0) throws Exception {
-		
-	
+
 		userService.deleteAll();
 		notifyService.deleteAll();
-		jobService.deleteAll();  
+		jobService.deleteAll();
 		logService.deleteAll();
 		nodeService.deleteAll();
-		
-		
+
 		nodeService.create(new NodeDAO("google.com", "10.0.0.1"));
 		nodeService.create(new NodeDAO("yahoo.com", "10.3.4.6"));
 		nodeService.create(new NodeDAO("bing.com", "10.2.3.4"));

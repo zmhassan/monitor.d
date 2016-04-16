@@ -16,6 +16,16 @@ Yes, but looking at the components I was planning on building I don’t see a si
 
 This project is not ready yet. Currently there is no release yet of this project. It's still in development but I will send out a tweet when its ready for use.
 
+
+## Api Swagger Docs:
+
+mvn spring-boot:run
+
+Open Browser and point to:
+`http://localhost:8080/v2/api-docs?group=coreapi`
+
+
+
 ## For Builds:
 
 See build.md
