@@ -31,6 +31,7 @@ public class LogController {
 		this.service = service;
 	}
 
+	
 	@RequestMapping( method = RequestMethod.GET)
 	public List<LogDAO> getAllLogs() {
 		return service.findAll();

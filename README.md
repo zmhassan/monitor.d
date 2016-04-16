@@ -26,6 +26,7 @@ Open Browser and point to:
 
 
 
+
 ## For Builds:
 
 See build.md
@@ -33,6 +34,10 @@ See build.md
 
 ## New UI Mockup:
 
+Screencast:
+![alt tag](https://raw.githubusercontent.com/BZCareer/monitor.d/master/monitorddemo1.gif)
+
+Screenshot:
 ![alt tag](https://raw.githubusercontent.com/BZCareer/monitor.d/master/Monitor-d-newUI.png)
 
 
