@@ -1,4 +1,5 @@
-<h3> Server Administration Page </h3>
+<div class="panel panel-default">
+<div class="panel-heading"><h4 class="bulletinBoard">Server Administration Page </h4> </div>
 <table id="data" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
         <tr>
@@ -10,8 +11,14 @@
     <tbody id="tableContent">
     </tbody>
 </table>
+<div class="panel-footer">
+    <a href="javascript: void(0)" class="btn btn-primary" data-toggle="modal" data-target="#addServer">Add New Server</a>
 
-<a href="javascript: void(0)" class="btn btn-primary" data-toggle="modal" data-target="#addServer">Add New Server</a>
+    </div>
+    
+</div>
+
+
 
 <script type="application/javascript">
     var getJSON = function (apiurl, action, payload, callback) {
@@ -60,7 +67,6 @@
             appendTableData(data[i].serverIp, data[i].serverName, data[i].id);
         }
     });
-
     var makeModel = (function (formFields, id, title) {
         html = '<!-- Modal -->' +
             '<div class="modal fade" id="' + id + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
@@ -82,32 +88,31 @@
             '</div>';
         $("body").append(html);
     });
-
     var createNewNode= function(){
         console.log("adding new server!!");
-               var req={ 
-            "serverName":  $("#serverName").val().toString(),
-            "serverIp": $("#serverIp").val().toString()
-            }
-               getJSON("/api/nodes", "POST", JSON.stringify(req), function (data) {
-                    restTableData(); });
+        var req = { 
+         "serverName":  $("#serverName").val().toString(),
+         "serverIp": $("#serverIp").val().toString()
+       }
+       getJSON("/api/nodes", 
+               "POST", 
+               JSON.stringify(req), 
+               function (data) {
+               restTableData(); 
+               $("#addServer").modal('hide');
+           growl("New Server Added "," Server Name: " + $("#serverName").val().toString()+" Server Ip: "+$("#serverIp").val().toString() )
+       });
     }
-
     var deleteNode=function( id ){
           getJSON("/api/nodes/"+id, "DELETE", null, function (data) {
                    console.log("deleted node "); 
-              
                 restTableData();          
           });
     }
-    
-    
-        
     var stubForm='<div id="form">'+
         '<table><tr><td><label class="form-control-label" for="serverName">Server Name  </label></td>'+
         '<td><input type="text" id="serverName" placeholder="Server Name"></td></tr>'+
         '<tr><td><label class="form-control-label" for="serverIp">Server Ip </label></td>'+
         '<td><input type="text" id="serverIp" placeholder="Server IP"></td></tr></table>';
-    
     makeModel(stubForm, "addServer", "Add New Server");
 </script>
