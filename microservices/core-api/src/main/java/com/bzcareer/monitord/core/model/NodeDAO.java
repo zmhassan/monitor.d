@@ -6,6 +6,8 @@ public class NodeDAO {
 	private String serverName;
 	private String serverIp;
 
+	public NodeDAO() {}
+	
 	public NodeDAO(String serverName, String serverIp) {
 
 		this.serverName = serverName;

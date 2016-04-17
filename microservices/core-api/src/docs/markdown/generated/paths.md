@@ -1,4 +1,36 @@
 ## Paths
+### createNotification
+```
+POST /api/alerts
+```
+
+#### Parameters
+|Type|Name|Description|Required|Schema|Default|
+|----|----|----|----|----|----|
+|BodyParameter|inbox|inbox|true|NotificationDAO||
+
+
+#### Responses
+|HTTP Code|Description|Schema|
+|----|----|----|
+|201|Created|NotificationDAO|
+|401|Unauthorized|No Content|
+|403|Forbidden|No Content|
+|404|Not Found|No Content|
+
+
+#### Consumes
+
+* application/json
+
+#### Produces
+
+* */*
+
+#### Tags
+
+* notification-controller
+
 ### getAllInbox
 ```
 GET /api/alerts
@@ -25,24 +57,24 @@ GET /api/alerts
 
 * notification-controller
 
-### createNotification
+### deleteNotification
 ```
-POST /api/alerts
+DELETE /api/alerts/{id}
 ```
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
 |----|----|----|----|----|----|
-|BodyParameter|inbox|inbox|true|NotificationDAO||
+|PathParameter|id|id|true|string||
 
 
 #### Responses
 |HTTP Code|Description|Schema|
 |----|----|----|
-|201|Created|NotificationDAO|
+|200|OK|NotificationDAO|
+|204|No Content|No Content|
 |401|Unauthorized|No Content|
 |403|Forbidden|No Content|
-|404|Not Found|No Content|
 
 
 #### Consumes
@@ -122,24 +154,28 @@ PUT /api/alerts/{id}
 
 * notification-controller
 
-### deleteNotification
+### createJob
 ```
-DELETE /api/alerts/{id}
+POST /api/jobs
 ```
+
+#### Description
+
+Inserts a new job into the database
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
 |----|----|----|----|----|----|
-|PathParameter|id|id|true|string||
+|BodyParameter|job|job|true|JobDAO||
 
 
 #### Responses
 |HTTP Code|Description|Schema|
 |----|----|----|
-|200|OK|NotificationDAO|
-|204|No Content|No Content|
+|201|Created|JobDAO|
 |401|Unauthorized|No Content|
 |403|Forbidden|No Content|
+|404|Not Found|No Content|
 
 
 #### Consumes
@@ -148,11 +184,12 @@ DELETE /api/alerts/{id}
 
 #### Produces
 
+* application/json
 * */*
 
 #### Tags
 
-* notification-controller
+* job-controller
 
 ### getAllJobs
 ```
@@ -185,28 +222,28 @@ Provides list of jobs that monitord has executed or is pending execution
 
 * job-controller
 
-### createJob
+### getJobById
 ```
-POST /api/jobs
+DELETE /api/jobs/{id}
 ```
 
 #### Description
 
-Inserts a new job into the database
+Delete job from database with the id provided in the url
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
 |----|----|----|----|----|----|
-|BodyParameter|job|job|true|JobDAO||
+|PathParameter|id|id|true|string||
 
 
 #### Responses
 |HTTP Code|Description|Schema|
 |----|----|----|
-|201|Created|JobDAO|
+|200|OK|JobDAO|
+|204|No Content|No Content|
 |401|Unauthorized|No Content|
 |403|Forbidden|No Content|
-|404|Not Found|No Content|
 
 
 #### Consumes
@@ -297,28 +334,24 @@ Query the database for job with the id provided in the url
 
 * job-controller
 
-### getJobById
+### createNode
 ```
-DELETE /api/jobs/{id}
+POST /api/logs
 ```
-
-#### Description
-
-Delete job from database with the id provided in the url
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
 |----|----|----|----|----|----|
-|PathParameter|id|id|true|string||
+|BodyParameter|node|node|true|LogDAO||
 
 
 #### Responses
 |HTTP Code|Description|Schema|
 |----|----|----|
-|200|OK|JobDAO|
-|204|No Content|No Content|
+|201|Created|LogDAO|
 |401|Unauthorized|No Content|
 |403|Forbidden|No Content|
+|404|Not Found|No Content|
 
 
 #### Consumes
@@ -327,12 +360,11 @@ Delete job from database with the id provided in the url
 
 #### Produces
 
-* application/json
 * */*
 
 #### Tags
 
-* job-controller
+* log-controller
 
 ### getAllLogs
 ```
@@ -360,24 +392,24 @@ GET /api/logs
 
 * log-controller
 
-### createNode
+### deleteNode
 ```
-POST /api/logs
+DELETE /api/logs/{id}
 ```
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
 |----|----|----|----|----|----|
-|BodyParameter|node|node|true|LogDAO||
+|PathParameter|id|id|true|string||
 
 
 #### Responses
 |HTTP Code|Description|Schema|
 |----|----|----|
-|201|Created|LogDAO|
+|200|OK|LogDAO|
+|204|No Content|No Content|
 |401|Unauthorized|No Content|
 |403|Forbidden|No Content|
-|404|Not Found|No Content|
 
 
 #### Consumes
@@ -457,24 +489,24 @@ PUT /api/logs/{id}
 
 * log-controller
 
-### deleteNode
+### createNode
 ```
-DELETE /api/logs/{id}
+POST /api/nodes
 ```
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
 |----|----|----|----|----|----|
-|PathParameter|id|id|true|string||
+|BodyParameter|node|node|true|NodeDAO||
 
 
 #### Responses
 |HTTP Code|Description|Schema|
 |----|----|----|
-|200|OK|LogDAO|
-|204|No Content|No Content|
+|201|Created|NodeDAO|
 |401|Unauthorized|No Content|
 |403|Forbidden|No Content|
+|404|Not Found|No Content|
 
 
 #### Consumes
@@ -483,11 +515,11 @@ DELETE /api/logs/{id}
 
 #### Produces
 
-* */*
+* application/json
 
 #### Tags
 
-* log-controller
+* node-controller
 
 ### getAllNodes
 ```
@@ -515,24 +547,24 @@ GET /api/nodes
 
 * node-controller
 
-### createNode
+### deleteNode
 ```
-POST /api/nodes
+DELETE /api/nodes/{id}
 ```
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
 |----|----|----|----|----|----|
-|BodyParameter|node|node|true|NodeDAO||
+|PathParameter|id|id|true|string||
 
 
 #### Responses
 |HTTP Code|Description|Schema|
 |----|----|----|
-|201|Created|NodeDAO|
+|200|OK|NodeDAO|
+|204|No Content|No Content|
 |401|Unauthorized|No Content|
 |403|Forbidden|No Content|
-|404|Not Found|No Content|
 
 
 #### Consumes
@@ -612,24 +644,24 @@ PUT /api/nodes/{id}
 
 * node-controller
 
-### deleteNode
+### getUser
 ```
-DELETE /api/nodes/{id}
+POST /api/users
 ```
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
 |----|----|----|----|----|----|
-|PathParameter|id|id|true|string||
+|BodyParameter|user|user|true|UserDAO||
 
 
 #### Responses
 |HTTP Code|Description|Schema|
 |----|----|----|
-|200|OK|NodeDAO|
-|204|No Content|No Content|
+|201|Created|UserDAO|
 |401|Unauthorized|No Content|
 |403|Forbidden|No Content|
+|404|Not Found|No Content|
 
 
 #### Consumes
@@ -642,7 +674,7 @@ DELETE /api/nodes/{id}
 
 #### Tags
 
-* node-controller
+* user-controller
 
 ### getAllUsers
 ```
@@ -670,24 +702,24 @@ GET /api/users
 
 * user-controller
 
-### getUser
+### deleteUser
 ```
-POST /api/users
+DELETE /api/users/{id}
 ```
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
 |----|----|----|----|----|----|
-|BodyParameter|user|user|true|UserDAO||
+|PathParameter|id|id|true|string||
 
 
 #### Responses
 |HTTP Code|Description|Schema|
 |----|----|----|
-|201|Created|UserDAO|
+|200|OK|UserDAO|
+|204|No Content|No Content|
 |401|Unauthorized|No Content|
 |403|Forbidden|No Content|
-|404|Not Found|No Content|
 
 
 #### Consumes
@@ -753,38 +785,6 @@ PUT /api/users/{id}
 |401|Unauthorized|No Content|
 |403|Forbidden|No Content|
 |404|Not Found|No Content|
-
-
-#### Consumes
-
-* application/json
-
-#### Produces
-
-* */*
-
-#### Tags
-
-* user-controller
-
-### deleteUser
-```
-DELETE /api/users/{id}
-```
-
-#### Parameters
-|Type|Name|Description|Required|Schema|Default|
-|----|----|----|----|----|----|
-|PathParameter|id|id|true|string||
-
-
-#### Responses
-|HTTP Code|Description|Schema|
-|----|----|----|
-|200|OK|UserDAO|
-|204|No Content|No Content|
-|401|Unauthorized|No Content|
-|403|Forbidden|No Content|
 
 
 #### Consumes
