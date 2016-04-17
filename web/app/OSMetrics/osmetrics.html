@@ -38,26 +38,5 @@ Shutdown</a>
         </tbody>
     </table>
 
-<script type="application/javascript">
 
- var getJSON= function( apiurl, action, payload, callback ){ 
-     $.ajax({
-				type: action,    
-				url:  apiurl,
-                data: payload,
-				dataType: "json",
-				cache: false,
-				success : callback
-        }); 
- } 
-    
- 
- var growl = function( gtitle, gtext ){
-        new PNotify({
-            title: gtitle,  
-            text: gtext
-        });
-    };
-    
-</script>
  
