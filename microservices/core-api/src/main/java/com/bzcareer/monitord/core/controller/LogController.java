@@ -44,19 +44,19 @@ public class LogController {
 
 	@RequestMapping ( method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public LogDAO createNode(@RequestBody @Valid LogDAO node) {
+	public LogDAO createLog(@RequestBody @Valid LogDAO node) {
 		LOGGER.info("Created Log Entry!");
 		return service.create(node);
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-	public LogDAO updateNode(@RequestBody @Valid LogDAO node) {
+	public LogDAO updateLog(@RequestBody @Valid LogDAO node) {
 		LOGGER.info("Updated Log Entry!");
 		return service.update(node);
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-	public LogDAO deleteNode(@PathVariable("id") String id) {
+	public LogDAO deleteLog(@PathVariable("id") String id) {
 		LOGGER.info("Deleted One Log Entry!");
 		return service.delete(id);
 	}
