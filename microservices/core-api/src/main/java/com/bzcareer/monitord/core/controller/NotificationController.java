@@ -32,7 +32,7 @@ public class NotificationController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<NotificationDAO> getAllInbox() {
+	public List<NotificationDAO> getAllNotifications() {
 		return service.findAll();
 	}
 
