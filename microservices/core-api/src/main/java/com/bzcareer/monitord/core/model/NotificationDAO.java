@@ -53,4 +53,10 @@ public class NotificationDAO {
 		this.message = message;
 	}
 
+	@Override
+	public String toString() {
+		return "NotificationDAO [id=" + id + ", notification_type=" + notification_type + ", from=" + from
+				+ ", message=" + message + "]";
+	}
+
 }

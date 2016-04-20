@@ -43,4 +43,11 @@ public class NodeDAO {
 	public void setServerIp(String serverIp) {
 		this.serverIp = serverIp;
 	}
+
+	@Override
+	public String toString() {
+		return "NodeDAO [id=" + id + ", serverName=" + serverName + ", serverIp=" + serverIp + "]";
+	}
+	
+	
 }

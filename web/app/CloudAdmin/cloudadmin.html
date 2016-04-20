@@ -111,7 +111,25 @@
           });
     }
      
-     var stubForm='<div id="serverform">'+
+
+    var createModalFormHTML= function(obj){
+        
+             var stub='<div id="serverform">';
+        
+obj.getFields.forEach(function(o){        
+ stub+='<div class="input-group">'+
+  '<span class="input-group-addon" id="basic-addon1">'+
+  '  <label class="form-control-label" style="width: 80px;"  for="'+ o.getFieldId +'">'+ o.getFieldName +'</label></span>'+
+  '<input type="text" id="'+ o.getFieldId +'" class="form-control" placeholder="'+ o.getFieldName +'" aria-describedby="basic-addon1">'+
+'</div><br>';
+    },this);
+        
+        stub += '</div>';
+        
+        return stub;
+    }
+    
+    var stubForm='<div id="serverform">'+
  '<div class="input-group">'+
   '<span class="input-group-addon" id="basic-addon1">'+
   '  <label class="form-control-label" style="width: 80px;"  for="serverName"> Server Name </label></span>'+
