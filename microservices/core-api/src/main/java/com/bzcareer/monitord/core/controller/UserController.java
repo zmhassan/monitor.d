@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bzcareer.monitord.core.model.UserDAO;
 import com.bzcareer.monitord.core.services.UserService;
 
+import io.swagger.annotations.ApiOperation;
+
 /**
  * User Controller
  * 
@@ -38,30 +40,45 @@ public class UserController {
 	public UserController(UserService service) {
 		this.service = service;
 	}
-
+	
+	@ApiOperation(value = "getAllUsers", produces="application/json", 
+			notes="Provides list of notifications that monitord is managing")
 	@RequestMapping(method = RequestMethod.GET)
 	public List<UserDAO> getAllUsers() {
+		LOGGER.info("get all users");
 		return service.findAll();
 	}
 
+	@ApiOperation(value = "getUserById", produces="application/json", 
+			notes="Query the database for user entry with the id provided in the url path")
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	public UserDAO getOneUser(@PathVariable("id") String id) {
+		LOGGER.info("find user by id: {}",id);
 		return service.findById(id);
 	}
 
+	@ApiOperation(value = "createUser", produces="application/json", consumes = "application/json",
+			notes="Inserts a new user entry in the database")
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public UserDAO getUser(@RequestBody @Valid UserDAO user) {
+		LOGGER.info("create user entry: {} ", user);
 		return service.create(user);
 	}
-
+	
+	@ApiOperation(value = "updateUserById", produces="application/json", 
+			notes="Update user entry with the id provided in the url")
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
 	public UserDAO updateUser(@RequestBody @Valid UserDAO user) {
+		LOGGER.info("update user entry: {}", user);
 		return service.update(user);
 	}
-
+	
+	@ApiOperation(value = "deleteUserById", produces="application/json", 
+			notes="Delete user from database with the id provided in the url")
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	public UserDAO deleteUser(@PathVariable("id") String id) {
+		LOGGER.info("delete user entry with id: {}", id);
 		return service.delete(id);
 	}
 

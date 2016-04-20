@@ -68,8 +68,10 @@ public class MondCoreServicesApplication implements CommandLineRunner {
 	 * 
 	 * These method will initialize the database with mock data and let me serve
 	 * up the ui with this data. To test ui visit:
-	 * "http://localhost:8080/api/jobs" "http://localhost:8080/api/logs"
-	 * "http://localhost:8080/api/nodes" "http://localhost:8080/api/alerts"
+	 * "http://localhost:8080/api/jobs" 
+	 * "http://localhost:8080/api/logs"
+	 * "http://localhost:8080/api/nodes" 
+	 * "http://localhost:8080/api/alerts"
 	 * "http://localhost:8080/api/users"
 	 * 
 	 * 

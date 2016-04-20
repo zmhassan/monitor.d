@@ -40,14 +40,16 @@ public class JobController {
 			notes="Provides list of jobs that monitord has executed or is pending execution")
 	@RequestMapping( method = RequestMethod.GET)
 	public List<JobDAO> getAllJobs() {
+		LOGGER.info("get all jobs");
 		return service.findAll();
 	}
 
 
 	@ApiOperation(value = "getJobById", produces="application/json", 
-			notes="Query the database for job with the id provided in the url path")
+			notes="Query the database for job entry with the id provided in the url path")
 	@RequestMapping(value = "{id}",method= RequestMethod.GET)
 	public JobDAO getJobById(@PathVariable("id") String id){
+		LOGGER.info("find jobs by id: {}",id);
 		return service.findById(id);
 	}
 	
@@ -56,23 +58,23 @@ public class JobController {
 	@RequestMapping( method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public JobDAO createJob(@RequestBody @Valid JobDAO job) {
-		LOGGER.info("Created job Entry!");
+		LOGGER.info("create job entry: {} ", job);
 		return service.create(job);
 	}
 
-	@ApiOperation(value = "getJobById", produces="application/json", 
-			notes="Query the database for job with the id provided in the url")
+	@ApiOperation(value = "updateJobById", produces="application/json", 
+			notes="Update job entry with the id provided in the url")
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
 	public JobDAO updateJob(@RequestBody @Valid JobDAO job) {
-		LOGGER.info("Updated Job Entry! ");
+		LOGGER.info("update job entry: {}", job);
 		return service.update(job);
 	}
 
-	@ApiOperation(value = "getJobById", produces="application/json", 
+	@ApiOperation(value = "deleteJobById", produces="application/json", 
 			notes="Delete job from database with the id provided in the url")
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	public JobDAO deleteJob(@PathVariable("id") String id) {
-		LOGGER.info("Deleted One Job Entry!");
+		LOGGER.info("delete job entry with id: {}", id);
 		return service.delete(id);
 	}
 }
