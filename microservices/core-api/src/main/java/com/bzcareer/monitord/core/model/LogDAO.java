@@ -53,4 +53,11 @@ public class LogDAO {
 		this.end = end;
 	}
 
+	@Override
+	public String toString() {
+		return "LogDAO [id=" + id + ", appName=" + appName + ", start=" + start + ", end=" + end + "]";
+	}
+
+	
+	
 }

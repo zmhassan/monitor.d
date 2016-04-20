@@ -73,4 +73,10 @@ public class JobDAO {
 	public void setType(String type) {
 		this.type = type;
 	}
+	@Override
+	public String toString() {
+		return "JobDAO [id=" + id + ", name=" + name + ", status=" + status + ", start=" + start + ", end=" + end
+				+ ", type=" + type + "]";
+	}
+	
 }
