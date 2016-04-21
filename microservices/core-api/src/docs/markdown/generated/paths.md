@@ -1,19 +1,17 @@
 ## Paths
-### createNotification
+### getAllJobs
 ```
-POST /api/alerts
+GET /api/jobs
 ```
 
-#### Parameters
-|Type|Name|Description|Required|Schema|Default|
-|----|----|----|----|----|----|
-|BodyParameter|inbox|inbox|true|NotificationDAO||
+#### Description
 
+Provides list of jobs that monitord has executed or is pending execution
 
 #### Responses
 |HTTP Code|Description|Schema|
 |----|----|----|
-|201|Created|NotificationDAO|
+|200|OK|JobDAO array|
 |401|Unauthorized|No Content|
 |403|Forbidden|No Content|
 |404|Not Found|No Content|
@@ -25,134 +23,12 @@ POST /api/alerts
 
 #### Produces
 
-* */*
-
-#### Tags
-
-* notification-controller
-
-### getAllInbox
-```
-GET /api/alerts
-```
-
-#### Responses
-|HTTP Code|Description|Schema|
-|----|----|----|
-|200|OK|NotificationDAO array|
-|401|Unauthorized|No Content|
-|403|Forbidden|No Content|
-|404|Not Found|No Content|
-
-
-#### Consumes
-
 * application/json
-
-#### Produces
-
 * */*
 
 #### Tags
 
-* notification-controller
-
-### deleteNotification
-```
-DELETE /api/alerts/{id}
-```
-
-#### Parameters
-|Type|Name|Description|Required|Schema|Default|
-|----|----|----|----|----|----|
-|PathParameter|id|id|true|string||
-
-
-#### Responses
-|HTTP Code|Description|Schema|
-|----|----|----|
-|200|OK|NotificationDAO|
-|204|No Content|No Content|
-|401|Unauthorized|No Content|
-|403|Forbidden|No Content|
-
-
-#### Consumes
-
-* application/json
-
-#### Produces
-
-* */*
-
-#### Tags
-
-* notification-controller
-
-### getNotificationById
-```
-GET /api/alerts/{id}
-```
-
-#### Parameters
-|Type|Name|Description|Required|Schema|Default|
-|----|----|----|----|----|----|
-|PathParameter|id|id|true|string||
-
-
-#### Responses
-|HTTP Code|Description|Schema|
-|----|----|----|
-|200|OK|NotificationDAO|
-|401|Unauthorized|No Content|
-|403|Forbidden|No Content|
-|404|Not Found|No Content|
-
-
-#### Consumes
-
-* application/json
-
-#### Produces
-
-* */*
-
-#### Tags
-
-* notification-controller
-
-### updateNotification
-```
-PUT /api/alerts/{id}
-```
-
-#### Parameters
-|Type|Name|Description|Required|Schema|Default|
-|----|----|----|----|----|----|
-|BodyParameter|inbox|inbox|true|NotificationDAO||
-
-
-#### Responses
-|HTTP Code|Description|Schema|
-|----|----|----|
-|200|OK|NotificationDAO|
-|201|Created|No Content|
-|401|Unauthorized|No Content|
-|403|Forbidden|No Content|
-|404|Not Found|No Content|
-
-
-#### Consumes
-
-* application/json
-
-#### Produces
-
-* */*
-
-#### Tags
-
-* notification-controller
+* job-controller
 
 ### createJob
 ```
@@ -191,38 +67,7 @@ Inserts a new job into the database
 
 * job-controller
 
-### getAllJobs
-```
-GET /api/jobs
-```
-
-#### Description
-
-Provides list of jobs that monitord has executed or is pending execution
-
-#### Responses
-|HTTP Code|Description|Schema|
-|----|----|----|
-|200|OK|JobDAO array|
-|401|Unauthorized|No Content|
-|403|Forbidden|No Content|
-|404|Not Found|No Content|
-
-
-#### Consumes
-
-* application/json
-
-#### Produces
-
-* application/json
-* */*
-
-#### Tags
-
-* job-controller
-
-### getJobById
+### deleteJobById
 ```
 DELETE /api/jobs/{id}
 ```
@@ -259,51 +104,14 @@ Delete job from database with the id provided in the url
 
 * job-controller
 
-### getJobById
-```
-GET /api/jobs/{id}
-```
-
-#### Description
-
-Query the database for job with the id provided in the url path
-
-#### Parameters
-|Type|Name|Description|Required|Schema|Default|
-|----|----|----|----|----|----|
-|PathParameter|id|id|true|string||
-
-
-#### Responses
-|HTTP Code|Description|Schema|
-|----|----|----|
-|200|OK|JobDAO|
-|401|Unauthorized|No Content|
-|403|Forbidden|No Content|
-|404|Not Found|No Content|
-
-
-#### Consumes
-
-* application/json
-
-#### Produces
-
-* application/json
-* */*
-
-#### Tags
-
-* job-controller
-
-### getJobById
+### updateJobById
 ```
 PUT /api/jobs/{id}
 ```
 
 #### Description
 
-Query the database for job with the id provided in the url
+Update job entry with the id provided in the url
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
@@ -334,15 +142,87 @@ Query the database for job with the id provided in the url
 
 * job-controller
 
-### createNode
+### getJobById
 ```
-POST /api/logs
+GET /api/jobs/{id}
 ```
+
+#### Description
+
+Query the database for job entry with the id provided in the url path
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
 |----|----|----|----|----|----|
-|BodyParameter|node|node|true|LogDAO||
+|PathParameter|id|id|true|string||
+
+
+#### Responses
+|HTTP Code|Description|Schema|
+|----|----|----|
+|200|OK|JobDAO|
+|401|Unauthorized|No Content|
+|403|Forbidden|No Content|
+|404|Not Found|No Content|
+
+
+#### Consumes
+
+* application/json
+
+#### Produces
+
+* application/json
+* */*
+
+#### Tags
+
+* job-controller
+
+### getAllLogs
+```
+GET /api/logs
+```
+
+#### Description
+
+Provides list of Logs that monitord has executed or is pending execution
+
+#### Responses
+|HTTP Code|Description|Schema|
+|----|----|----|
+|200|OK|LogDAO array|
+|401|Unauthorized|No Content|
+|403|Forbidden|No Content|
+|404|Not Found|No Content|
+
+
+#### Consumes
+
+* application/json
+
+#### Produces
+
+* application/json
+* */*
+
+#### Tags
+
+* log-controller
+
+### createLog
+```
+POST /api/logs
+```
+
+#### Description
+
+Creates of log entry that monitord has captured
+
+#### Parameters
+|Type|Name|Description|Required|Schema|Default|
+|----|----|----|----|----|----|
+|BodyParameter|log|log|true|LogDAO||
 
 
 #### Responses
@@ -360,42 +240,21 @@ POST /api/logs
 
 #### Produces
 
-* */*
-
-#### Tags
-
-* log-controller
-
-### getAllLogs
-```
-GET /api/logs
-```
-
-#### Responses
-|HTTP Code|Description|Schema|
-|----|----|----|
-|200|OK|LogDAO array|
-|401|Unauthorized|No Content|
-|403|Forbidden|No Content|
-|404|Not Found|No Content|
-
-
-#### Consumes
-
 * application/json
-
-#### Produces
-
 * */*
 
 #### Tags
 
 * log-controller
 
-### deleteNode
+### deleteLogById
 ```
 DELETE /api/logs/{id}
 ```
+
+#### Description
+
+Delete log from database with the id provided in the url
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
@@ -418,16 +277,59 @@ DELETE /api/logs/{id}
 
 #### Produces
 
+* application/json
 * */*
 
 #### Tags
 
 * log-controller
 
-### getLogById
+### updateLog
+```
+PUT /api/logs/{id}
+```
+
+#### Description
+
+Update of log entry that monitord has captured
+
+#### Parameters
+|Type|Name|Description|Required|Schema|Default|
+|----|----|----|----|----|----|
+|BodyParameter|log|log|true|LogDAO||
+
+
+#### Responses
+|HTTP Code|Description|Schema|
+|----|----|----|
+|200|OK|LogDAO|
+|201|Created|No Content|
+|401|Unauthorized|No Content|
+|403|Forbidden|No Content|
+|404|Not Found|No Content|
+
+
+#### Consumes
+
+* application/json
+
+#### Produces
+
+* application/json
+* */*
+
+#### Tags
+
+* log-controller
+
+### getLogsById
 ```
 GET /api/logs/{id}
 ```
+
+#### Description
+
+Query the database for log entry with the id provided in the url path
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
@@ -450,28 +352,26 @@ GET /api/logs/{id}
 
 #### Produces
 
+* application/json
 * */*
 
 #### Tags
 
 * log-controller
 
-### updateNode
+### getAllNodes
 ```
-PUT /api/logs/{id}
+GET /api/nodes
 ```
 
-#### Parameters
-|Type|Name|Description|Required|Schema|Default|
-|----|----|----|----|----|----|
-|BodyParameter|node|node|true|LogDAO||
+#### Description
 
+Provides list of nodes that monitord is managing
 
 #### Responses
 |HTTP Code|Description|Schema|
 |----|----|----|
-|200|OK|LogDAO|
-|201|Created|No Content|
+|200|OK|NodeDAO array|
 |401|Unauthorized|No Content|
 |403|Forbidden|No Content|
 |404|Not Found|No Content|
@@ -483,16 +383,21 @@ PUT /api/logs/{id}
 
 #### Produces
 
+* application/json
 * */*
 
 #### Tags
 
-* log-controller
+* node-controller
 
 ### createNode
 ```
 POST /api/nodes
 ```
+
+#### Description
+
+Inserts a new Node entry in the database
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
@@ -521,36 +426,14 @@ POST /api/nodes
 
 * node-controller
 
-### getAllNodes
-```
-GET /api/nodes
-```
-
-#### Responses
-|HTTP Code|Description|Schema|
-|----|----|----|
-|200|OK|NodeDAO array|
-|401|Unauthorized|No Content|
-|403|Forbidden|No Content|
-|404|Not Found|No Content|
-
-
-#### Consumes
-
-* application/json
-
-#### Produces
-
-* */*
-
-#### Tags
-
-* node-controller
-
-### deleteNode
+### deleteNodeById
 ```
 DELETE /api/nodes/{id}
 ```
+
+#### Description
+
+Delete node from database with the id provided in the url
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
@@ -573,48 +456,21 @@ DELETE /api/nodes/{id}
 
 #### Produces
 
-* */*
-
-#### Tags
-
-* node-controller
-
-### getNodeById
-```
-GET /api/nodes/{id}
-```
-
-#### Parameters
-|Type|Name|Description|Required|Schema|Default|
-|----|----|----|----|----|----|
-|PathParameter|id|id|true|string||
-
-
-#### Responses
-|HTTP Code|Description|Schema|
-|----|----|----|
-|200|OK|NodeDAO|
-|401|Unauthorized|No Content|
-|403|Forbidden|No Content|
-|404|Not Found|No Content|
-
-
-#### Consumes
-
 * application/json
-
-#### Produces
-
 * */*
 
 #### Tags
 
 * node-controller
 
-### updateNode
+### updateNodeById
 ```
 PUT /api/nodes/{id}
 ```
+
+#### Description
+
+Update node entry with the id provided in the url
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
@@ -638,16 +494,269 @@ PUT /api/nodes/{id}
 
 #### Produces
 
+* application/json
 * */*
 
 #### Tags
 
 * node-controller
 
-### getUser
+### getNodeById
+```
+GET /api/nodes/{id}
+```
+
+#### Description
+
+Query the database for job entry with the id provided in the url path
+
+#### Parameters
+|Type|Name|Description|Required|Schema|Default|
+|----|----|----|----|----|----|
+|PathParameter|id|id|true|string||
+
+
+#### Responses
+|HTTP Code|Description|Schema|
+|----|----|----|
+|200|OK|NodeDAO|
+|401|Unauthorized|No Content|
+|403|Forbidden|No Content|
+|404|Not Found|No Content|
+
+
+#### Consumes
+
+* application/json
+
+#### Produces
+
+* application/json
+* */*
+
+#### Tags
+
+* node-controller
+
+### getAllNotifications
+```
+GET /api/notification
+```
+
+#### Description
+
+Provides list of notifications that monitord is managing
+
+#### Responses
+|HTTP Code|Description|Schema|
+|----|----|----|
+|200|OK|NotificationDAO array|
+|401|Unauthorized|No Content|
+|403|Forbidden|No Content|
+|404|Not Found|No Content|
+
+
+#### Consumes
+
+* application/json
+
+#### Produces
+
+* application/json
+* */*
+
+#### Tags
+
+* notification-controller
+
+### createNotification
+```
+POST /api/notification
+```
+
+#### Description
+
+Inserts a new notification entry in the database
+
+#### Parameters
+|Type|Name|Description|Required|Schema|Default|
+|----|----|----|----|----|----|
+|BodyParameter|notification|notification|true|NotificationDAO||
+
+
+#### Responses
+|HTTP Code|Description|Schema|
+|----|----|----|
+|201|Created|NotificationDAO|
+|401|Unauthorized|No Content|
+|403|Forbidden|No Content|
+|404|Not Found|No Content|
+
+
+#### Consumes
+
+* application/json
+
+#### Produces
+
+* application/json
+* */*
+
+#### Tags
+
+* notification-controller
+
+### deleteNotificationById
+```
+DELETE /api/notification/{id}
+```
+
+#### Description
+
+Delete notification from database with the id provided in the url
+
+#### Parameters
+|Type|Name|Description|Required|Schema|Default|
+|----|----|----|----|----|----|
+|PathParameter|id|id|true|string||
+
+
+#### Responses
+|HTTP Code|Description|Schema|
+|----|----|----|
+|200|OK|NotificationDAO|
+|204|No Content|No Content|
+|401|Unauthorized|No Content|
+|403|Forbidden|No Content|
+
+
+#### Consumes
+
+* application/json
+
+#### Produces
+
+* application/json
+* */*
+
+#### Tags
+
+* notification-controller
+
+### updateNotificationById
+```
+PUT /api/notification/{id}
+```
+
+#### Description
+
+Update notification entry with the id provided in the url
+
+#### Parameters
+|Type|Name|Description|Required|Schema|Default|
+|----|----|----|----|----|----|
+|BodyParameter|notification|notification|true|NotificationDAO||
+
+
+#### Responses
+|HTTP Code|Description|Schema|
+|----|----|----|
+|200|OK|NotificationDAO|
+|201|Created|No Content|
+|401|Unauthorized|No Content|
+|403|Forbidden|No Content|
+|404|Not Found|No Content|
+
+
+#### Consumes
+
+* application/json
+
+#### Produces
+
+* application/json
+* */*
+
+#### Tags
+
+* notification-controller
+
+### getNotificationById
+```
+GET /api/notification/{id}
+```
+
+#### Description
+
+Query the database for notification entry with the id provided in the url path
+
+#### Parameters
+|Type|Name|Description|Required|Schema|Default|
+|----|----|----|----|----|----|
+|PathParameter|id|id|true|string||
+
+
+#### Responses
+|HTTP Code|Description|Schema|
+|----|----|----|
+|200|OK|NotificationDAO|
+|401|Unauthorized|No Content|
+|403|Forbidden|No Content|
+|404|Not Found|No Content|
+
+
+#### Consumes
+
+* application/json
+
+#### Produces
+
+* application/json
+* */*
+
+#### Tags
+
+* notification-controller
+
+### getAllUsers
+```
+GET /api/users
+```
+
+#### Description
+
+Provides list of notifications that monitord is managing
+
+#### Responses
+|HTTP Code|Description|Schema|
+|----|----|----|
+|200|OK|UserDAO array|
+|401|Unauthorized|No Content|
+|403|Forbidden|No Content|
+|404|Not Found|No Content|
+
+
+#### Consumes
+
+* application/json
+
+#### Produces
+
+* application/json
+* */*
+
+#### Tags
+
+* user-controller
+
+### createUser
 ```
 POST /api/users
 ```
+
+#### Description
+
+Inserts a new user entry in the database
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
@@ -670,42 +779,21 @@ POST /api/users
 
 #### Produces
 
-* */*
-
-#### Tags
-
-* user-controller
-
-### getAllUsers
-```
-GET /api/users
-```
-
-#### Responses
-|HTTP Code|Description|Schema|
-|----|----|----|
-|200|OK|UserDAO array|
-|401|Unauthorized|No Content|
-|403|Forbidden|No Content|
-|404|Not Found|No Content|
-
-
-#### Consumes
-
 * application/json
-
-#### Produces
-
 * */*
 
 #### Tags
 
 * user-controller
 
-### deleteUser
+### deleteUserById
 ```
 DELETE /api/users/{id}
 ```
+
+#### Description
+
+Delete user from database with the id provided in the url
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
@@ -728,48 +816,21 @@ DELETE /api/users/{id}
 
 #### Produces
 
-* */*
-
-#### Tags
-
-* user-controller
-
-### getOneUser
-```
-GET /api/users/{id}
-```
-
-#### Parameters
-|Type|Name|Description|Required|Schema|Default|
-|----|----|----|----|----|----|
-|PathParameter|id|id|true|string||
-
-
-#### Responses
-|HTTP Code|Description|Schema|
-|----|----|----|
-|200|OK|UserDAO|
-|401|Unauthorized|No Content|
-|403|Forbidden|No Content|
-|404|Not Found|No Content|
-
-
-#### Consumes
-
 * application/json
-
-#### Produces
-
 * */*
 
 #### Tags
 
 * user-controller
 
-### updateUser
+### updateUserById
 ```
 PUT /api/users/{id}
 ```
+
+#### Description
+
+Update user entry with the id provided in the url
 
 #### Parameters
 |Type|Name|Description|Required|Schema|Default|
@@ -793,6 +854,44 @@ PUT /api/users/{id}
 
 #### Produces
 
+* application/json
+* */*
+
+#### Tags
+
+* user-controller
+
+### getUserById
+```
+GET /api/users/{id}
+```
+
+#### Description
+
+Query the database for user entry with the id provided in the url path
+
+#### Parameters
+|Type|Name|Description|Required|Schema|Default|
+|----|----|----|----|----|----|
+|PathParameter|id|id|true|string||
+
+
+#### Responses
+|HTTP Code|Description|Schema|
+|----|----|----|
+|200|OK|UserDAO|
+|401|Unauthorized|No Content|
+|403|Forbidden|No Content|
+|404|Not Found|No Content|
+
+
+#### Consumes
+
+* application/json
+
+#### Produces
+
+* application/json
 * */*
 
 #### Tags
