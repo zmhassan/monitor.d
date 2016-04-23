@@ -1,6 +1,9 @@
 package com.bzcareer.monitord.core.services;
 
  
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,9 +20,6 @@ import com.bzcareer.monitord.core.config.MondCoreServicesApplication;
 
 import io.github.robwin.markup.builder.MarkupLanguage;
 import springfox.documentation.staticdocs.Swagger2MarkupResultHandler;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -1,10 +1,15 @@
 package com.bzcareer.monitord.core.model;
 
+import javax.validation.constraints.NotNull;
+
 public class LogDAO {
 
 	private String id;
+	@NotNull
 	private String appName;
-	
+	public LogDAO(){
+		
+	}
 	public LogDAO(String appName, String start, String end) {
  		this.appName = appName;
 		this.start = start;

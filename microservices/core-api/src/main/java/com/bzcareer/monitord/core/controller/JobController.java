@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bzcareer.monitord.core.model.JobDAO;
 import com.bzcareer.monitord.core.services.JobService;
 
-import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/api/jobs")
