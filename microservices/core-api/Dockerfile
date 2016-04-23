@@ -8,4 +8,4 @@ ADD ./target/mond-core-1.0.0-SNAPSHOT.jar /app
 
 EXPOSE 8181 
 
-ENTRYPOINT ["java","-jar", "mond-core-1.0.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar", "mond-core-1.0.0-SNAPSHOT.jar", "--server.port=8181"]
