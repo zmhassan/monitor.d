@@ -1,9 +1,14 @@
 package com.bzcareer.monitord.core.model;
 
+import javax.validation.constraints.NotNull;
+
 public class NotificationDAO {
 	private String id;
+	@NotNull
 	private String notification_type;
+	@NotNull
 	private String from;
+	@NotNull
 	private String message;
 
 	
@@ -20,6 +25,8 @@ public class NotificationDAO {
 		from = inbox.getFrom();
 		message = inbox.getMessage();
 	}
+
+	public NotificationDAO() { }
 
 	public String getId() {
 		return id;

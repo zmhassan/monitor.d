@@ -1,11 +1,18 @@
 package com.bzcareer.monitord.core.model;
 
+import javax.validation.constraints.NotNull;
+
 public class JobDAO {
 	String id;
+	@NotNull
 	String name;
+	@NotNull
 	String status;
+	@NotNull
 	String start;
+	@NotNull
 	String end;
+	@NotNull
 	String type;
 
 	public JobDAO(){}

@@ -1,5 +1,7 @@
 package com.bzcareer.monitord.core.model;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * UserDAO<br>
  * 
@@ -7,8 +9,11 @@ package com.bzcareer.monitord.core.model;
  */
 public final class UserDAO {
 	private String id;
+	@NotNull
 	private String username;
+	@NotNull
 	private String team;
+	@NotNull
 	private String password;
 	
 	public UserDAO(Users user){
@@ -25,6 +30,8 @@ public final class UserDAO {
 	}
 
 
+
+	public UserDAO() { }
 
 	public String getUsername() {
 		return username;
