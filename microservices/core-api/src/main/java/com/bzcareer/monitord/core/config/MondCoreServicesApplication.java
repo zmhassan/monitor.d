@@ -57,7 +57,6 @@ public class MondCoreServicesApplication implements CommandLineRunner {
 				.apis(RequestHandlerSelectors.any())
 				.paths(regex("/api.*")) 
 				.build();
-
 	}
  
 	public static void main(String[] args) {
@@ -87,13 +86,11 @@ public class MondCoreServicesApplication implements CommandLineRunner {
 	 **/
 	@Override
 	public void run(String... arg0) throws Exception {
-
 		userService.deleteAll();
 		notifyService.deleteAll();
 		jobService.deleteAll();
 		logService.deleteAll();
 		nodeService.deleteAll();
-
 		nodeService.create(new NodeDAO("google.com", "10.0.0.1"));
 		nodeService.create(new NodeDAO("yahoo.com", "10.3.4.6"));
 		nodeService.create(new NodeDAO("bing.com", "10.2.3.4"));
@@ -105,11 +102,9 @@ public class MondCoreServicesApplication implements CommandLineRunner {
 		notifyService.create(new NotificationDAO("SMS", "johnsmith", "Service Outage"));
 		notifyService.create(new NotificationDAO("Email", "jimmypickel", "Out of Memory"));
 		notifyService.create(new NotificationDAO("Voicemail", "henrysimmons", "Out Of CPU"));
-
 		logService.create(new LogDAO("fraud-service", "2014-10-20_20:12:00", "2013-03-20_20:12:00"));
 		logService.create(new LogDAO("audit-service", "2013-12-20_20:42:00", "2014-03-20_20:12:00"));
 		logService.create(new LogDAO("add-service", "2011-03-22_23:42:00", "2013-12-20_20:12:00"));
-
 		jobService.create(
 				new JobDAO("hadoop-1", "success", "2014-10-20_20:12:00", "2013-03-20_20:12:00", "server-provision"));
 		jobService.create(

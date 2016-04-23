@@ -54,6 +54,11 @@
 			<version>2.4.0</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- Validation -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+ 		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
