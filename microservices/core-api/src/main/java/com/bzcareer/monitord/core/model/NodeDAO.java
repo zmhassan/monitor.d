@@ -1,9 +1,16 @@
 package com.bzcareer.monitord.core.model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class NodeDAO {
 
 	private String id;
+	@Size( min=5)
+	@NotNull
 	private String serverName;
+ 	@NotNull
 	private String serverIp;
 
 	public NodeDAO() {}
