@@ -61,7 +61,7 @@ public class UserController {
 			notes="Inserts a new user entry in the database")
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public UserDAO getUser(@RequestBody @Valid UserDAO user) {
+	public UserDAO createUser(@RequestBody @Valid UserDAO user) {
 		LOGGER.info("create user entry: {} ", user);
 		return service.create(user);
 	}
