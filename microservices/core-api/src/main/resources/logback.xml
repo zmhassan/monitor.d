@@ -7,9 +7,9 @@
         </encoder>
     </appender>
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/logs/coreapi/coreapi.log</file>
+        <file>logs/coreapi/coreapi.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern> /logs/coreapi/coreapi_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern> logs/coreapi/coreapi_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
 
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>5MB</maxFileSize>
