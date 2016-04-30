@@ -9,6 +9,8 @@ import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerCertificateException;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.DockerException;
+import com.spotify.docker.client.messages.ContainerConfig;
+import com.spotify.docker.client.messages.ContainerCreation;
 
 public class ConnectionTest {
  
@@ -19,8 +21,15 @@ public class ConnectionTest {
 	public void test() {
 		try {
 
-			final DockerClient docker = createClient();
-
+			final DockerClient docker = createClient();		
+			String name="TESTING1234";
+			docker.pull("ansible/centos7-ansible");
+			final ContainerConfig config = ContainerConfig.builder()
+				    .image("ansible/centos7-ansible")
+				    .build();
+			final ContainerCreation creation = docker.createContainer(config, name);
+		 
+			docker.startContainer(creation.id());
 			LOGGER.info("Number of Containers: " + docker.info().containers());
 			LOGGER.info("Number of CPUs: " + docker.info().cpus());
 			LOGGER.info("Number of Images: " + docker.info().images());
