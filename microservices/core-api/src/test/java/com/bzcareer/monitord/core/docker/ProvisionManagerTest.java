@@ -1,5 +1,7 @@
 package com.bzcareer.monitord.core.docker;
 
+import java.util.function.Function;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -12,6 +14,7 @@ public class ProvisionManagerTest {
 	@Ignore("Need to create docker image from these values passed in")
 	@Test
 	public void test() {
+ 		
 			DockerManager dm = DockerManager.newInstance()
 					.withAnsiblePlayBook("https://github.com/BZCareer/monitor.d/tree/master/ansible")
 					.withKeyUri("file:///");
@@ -30,4 +33,5 @@ public class ProvisionManagerTest {
 			}
 			System.out.println(dm);
 	}
+ 
 }
