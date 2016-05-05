@@ -10,7 +10,9 @@ HADOOP_DATANODE_2_IP                = '192.168.33.6'
 Vagrant.configure("2") do |config|
 
   config.ssh.insert_key = false
-
+#  config.ssh.username = 'root'
+#  config.ssh.password = 'vagrant'
+#  config.ssh.insert_key = 'true'
   # define Master server
     config.vm.define "hadoopmaster" do |hadoopmaster|
     hadoopmaster.vm.hostname = "hadoopmaster"
