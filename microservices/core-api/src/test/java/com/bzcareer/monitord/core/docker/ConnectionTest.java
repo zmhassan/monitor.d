@@ -14,18 +14,20 @@ import com.spotify.docker.client.messages.ContainerCreation;
 
 public class ConnectionTest {
  
+	private static final String DOCKER_IMG_NAME = "mongo";
+	//private static final String DOCKER_IMG_NAME = "ansible/centos7-ansible";
 	private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionTest.class);
 
-    @Ignore("Disabling Because Travis CI isn't ready")
+ //   @Ignore("Disabling Because Travis CI isn't ready")
 	@Test
 	public void test() {
 		try {
-
+ 
 			final DockerClient docker = createClient();		
-			String name="TESTING1234";
-			docker.pull("ansible/centos7-ansible");
+			String name="TESTING123456Mongo";
+			docker.pull(DOCKER_IMG_NAME);
 			final ContainerConfig config = ContainerConfig.builder()
-				    .image("ansible/centos7-ansible")
+				    .image(DOCKER_IMG_NAME).attachStdout(true)
 				    .build();
 			final ContainerCreation creation = docker.createContainer(config, name);
 		 
