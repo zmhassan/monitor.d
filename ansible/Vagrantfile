@@ -3,9 +3,9 @@
 
 PEM_KEY                             = '/Users/vader/.vagrant.d/insecure_private_key'
 ID_RSA                              = '/home/vagrant/.ssh/id_rsa'
-HADOOP_MASTER_IP                    = '192.168.1.4'
-HADOOP_DATANODE_1_IP                = '192.168.1.5'
-HADOOP_DATANODE_2_IP                = '192.168.1.6'
+HADOOP_MASTER_IP                    = '192.168.33.4'
+HADOOP_DATANODE_1_IP                = '192.168.33.5'
+HADOOP_DATANODE_2_IP                = '192.168.33.6'
 
 Vagrant.configure("2") do |config|
 
@@ -13,9 +13,9 @@ Vagrant.configure("2") do |config|
 
   # define Master server
     config.vm.define "hadoopmaster" do |hadoopmaster|
-    hadoopmaster.vm.hostname = "hadoopmasterr"
+    hadoopmaster.vm.hostname = "hadoopmaster"
     hadoopmaster.vm.box = "bento/centos-7.1"
-    hadoopmaster.vm.synced_folder ".", "/home/vagrant", mount_options: ["dmode=775,fmode=664"]
+    #hadoopmaster.vm.synced_folder ".", "/home/vagrant", mount_options: ["dmode=775,fmode=664"]
     hadoopmaster.vm.network "private_network", ip: HADOOP_MASTER_IP
     hadoopmaster.vm.provider "virtualbox" do |v|
       v.name = "hadoopmasterr"
@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
   end
 
   # define data1 server
-config.vm.define "hadoopdata1" do |hadoopdata1|
+    config.vm.define "hadoopdata1" do |hadoopdata1|
     hadoopdata1.vm.hostname = "hadoopdata1"
     hadoopdata1.vm.box = "bento/centos-7.1"
     hadoopdata1.vm.network "private_network", ip: HADOOP_DATANODE_1_IP
@@ -64,9 +64,12 @@ config.vm.define "hadoopdata1" do |hadoopdata1|
     end
      
 #  Run ansible script to provision cluster
-#   hadoopdata2.vm.provision "ansible" do |ansible|
-#       ansible.playbook = "site.yml"
-#   end
+   hadoopdata2.vm.provision "ansible" do |ansible|
+      ansible.playbook       = "site.yml"
+      ansible.verbose        = true
+      ansible.limit          = "all" # or only "nodes" group, etc.
+      ansible.inventory_path = "inventory.yml"
+   end
  
   end
 

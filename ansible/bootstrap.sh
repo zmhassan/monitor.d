@@ -3,10 +3,10 @@
 # Author: Zak Hassan
 
 
-sudo yum update -y
+#sudo yum update -y
 
-curl "https://bootstrap.pypa.io/get-pip.py"  | sudo python   -
+#curl "https://bootstrap.pypa.io/get-pip.py"  | sudo python   -
 
-sudo pip install ansible
+#sudo pip install ansible
 
 
