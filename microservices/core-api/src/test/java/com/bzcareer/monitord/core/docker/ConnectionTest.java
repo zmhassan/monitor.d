@@ -18,7 +18,7 @@ public class ConnectionTest {
 	//private static final String DOCKER_IMG_NAME = "ansible/centos7-ansible";
 	private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionTest.class);
 
- //   @Ignore("Disabling Because Travis CI isn't ready")
+    @Ignore("Disabling Because Travis CI isn't ready")
 	@Test
 	public void test() {
 		try {
