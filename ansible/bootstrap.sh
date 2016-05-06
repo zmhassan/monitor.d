@@ -10,3 +10,11 @@ export ANSIBLE_HOST_KEY_CHECKING=False
 #sudo pip install ansible
 
 
+
+cat >> /etc/hosts <<EOL
+
+192.168.33.40 hadoopmaster
+192.168.33.41 hadoopdata1
+192.168.33.42 hadoopdata2
+
+EOL
