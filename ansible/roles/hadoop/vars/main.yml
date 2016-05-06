@@ -1,9 +1,10 @@
 ---
 # vars file for hadoop
-hadoop_binary: hadoop-2.6.4.tar.gz
+hadoop_binary: hadoop-2.7.1.tar.gz
 hadoop_install_dir: /usr/local/hadoop
 hadoop_prefix_dir: /usr/local
-hadoop_version: hadoop-2.6.4
-hadoop_uid: centos
-hadoop_gid: centos
+hadoop_version: hadoop-2.7.1
+hadoop_uid: hadoop
+hadoop_gid: hadoop
 hadoop_apache_mirror: http://apache.sunsite.ualberta.ca/hadoop/common
+hadoopmaster: 192.168.33.40

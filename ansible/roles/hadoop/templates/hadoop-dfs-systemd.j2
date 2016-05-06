@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=forking
-User=centos
+User=hadoop
 Environment=HADOOP_PREFIX={{ hadoop_install_dir }}  JAVA_HOME=/usr/lib/jvm/java-1.7.0
 ExecStart={{ hadoop_install_dir }}/sbin/start-dfs.sh
 ExecStop={{ hadoop_install_dir }}/sbin/stop-dfs.sh
