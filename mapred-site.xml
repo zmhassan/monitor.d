@@ -13,29 +13,20 @@
   See the License for the specific language governing permissions and
   limitations under the License. See accompanying LICENSE file.
 -->
+
+<!-- Put site-specific property overrides in this file. -->
+
 <configuration>
   <property>
-    <name>yarn.nodemanager.aux-services</name>
-    <value>mapreduce_shuffle</value>
+    <name>mapred.job.tracker</name>
+    <value>{{ nodes[0]['hostname'] }}:54311</value>
+    <description>The host and port that the MapReduce job tracker runs
+    at.  If "local", then jobs are run in-process as a single map
+    and reduce task.
+    </description>
   </property>
-  <property>
-    <name>yarn.resourcemanager.scheduler.address</name>
-    <value>{{ hadoopmaster }}:8030</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.address</name>
-    <value>{{ hadoopmaster }}:8032</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.webapp.address</name>
-    <value>{{ hadoopmaster }}:8088</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.resource-tracker.address</name>
-    <value>{{ hadoopmaster }}:8031</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.admin.address</name>
-    <value>{{ hadoopmaster }}:8033</value>
+  <property>  
+    <name>mapreduce.framework.name</name>  
+    <value>yarn</value>  
   </property>
 </configuration>

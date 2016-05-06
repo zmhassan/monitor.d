@@ -10,8 +10,16 @@
 #   yum: name=java-1.7.0-openjdk-devel.x86_64 state=latest
 # - name: install wget
 #   yum: name=wget state=latest
-- name: download zookeeper from apache mirror
-  command: wget http://apache.sunsite.ualberta.ca/zookeeper/zookeeper-3.5.0-alpha/zookeeper-3.5.0-alpha.tar.gz -P /tmp/
+# - name: download zookeeper from apache mirror
+#   command: wget http://apache.sunsite.ualberta.ca/zookeeper/zookeeper-3.5.0-alpha/zookeeper-3.5.0-alpha.tar.gz -P /tmp/
+- name: stat /tmp/zookeeper-3.5.0-alpha.tar.gz
+  stat: path=/tmp/zookeeper-3.5.0-alpha.tar.gz
+  register: hdbinary_stat
+- name: copy zookeeper to tmp folder
+  copy: src=zookeeper-3.5.0-alpha.tar.gz dest=/tmp/
+  when: hdbinary_stat.stat.exists == False
+  tags:
+    - provision_copy_to_remote
 - name: unzip tarball and place in /usr/local/
   command: tar zxf /tmp/zookeeper-3.5.0-alpha.tar.gz -C /usr/local/
 - name: stat /usr/local/zookeeper
@@ -20,14 +28,14 @@
 - name: rename file
   command: creates="/usr/local/zookeeper" mv /usr/local/zookeeper-3.5.0-alpha/  /usr/local/zookeeper
   when: zk_dir_stat.stat.exists == False
-- name: change permissions to centos user
-  command: chown -R centos:centos /usr/local/zookeeper
+# - name: change permissions to centos user
+#   command: chown -R centos:centos /usr/local/zookeeper
 - name: create logs directory
-  file: path=/usr/local/zookeeper/logs state=directory mode=0755 group=centos owner=centos
+  file: path=/usr/local/zookeeper/logs state=directory mode=0755 #group=hadoop owner=hadoop
 - name: setup configuration file
   template: src=zoo.cfg.j2 dest=/usr/local/zookeeper/conf/zoo.cfg
 - name: setup zk myid file
   template: src=myid.j2 dest=/usr/local/zookeeper/logs/myid
 - name: setup systemd unit file
   template: src=zookeeper-systemd.j2 dest=/lib/systemd/system/zookeeper.service
-  notify: reload systemd
+#  notify: reload systemd

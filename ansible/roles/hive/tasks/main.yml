@@ -1,2 +1,18 @@
 ---
 # tasks file for hive
+- name: stat /tmp/apache-hive-2.0.0-bin.tar.gz
+  stat: path=/tmp/apache-hive-2.0.0-bin.tar.gz
+  register: hivebinary_stat
+- name: copy hive to tmp folder
+  copy: src=apache-hive-2.0.0-bin.tar.gz dest=/tmp/
+  when: hivebinary_stat.stat.exists == False
+  tags:
+    - provision_copy_to_remote
+- name: unzip tarball and place in /usr/local/
+  command: tar zxf /tmp/apache-hive-2.0.0-bin.tar.gz -C /usr/local/
+- name: stat /usr/local/hive
+  stat: path=/usr/local/hive
+  register: hive_dir_stat
+- name: rename file
+  command: creates="/usr/local/hive" mv /usr/local/apache-hive-2.0.0-bin/  /usr/local/hive
+  when: hive_dir_stat.stat.exists == False
