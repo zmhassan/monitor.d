@@ -4,8 +4,9 @@
 
 export ANSIBLE_HOST_KEY_CHECKING=False
 
-#sudo yum update -y
-#yum install gcc
+sudo yum group install "Development Tools" -y
+sudo yum install epel-release -y
+sudo yum install ansible -y
 #curl "https://bootstrap.pypa.io/get-pip.py"  | sudo python   -
 #sudo pip install ansible
 
