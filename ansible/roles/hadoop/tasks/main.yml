@@ -47,10 +47,22 @@
     - { name: mapred-site.xml }
     - { name: yarn-site.xml   }
 
+# TODO: Need to create http://docs.ansible.com/ansible/authorized_key_module.html
+# So hadoop can ssh into alternate servers using hadoop acount
 - lineinfile: dest=/home/hadoop/.bashrc regexp="HADOOP_HOME=" line="export HADOOP_HOME=/usr/local/hadoop"
 - lineinfile: dest=/home/hadoop/.bashrc regexp="JAVA_HOME=" line="export JAVA_HOME=/usr/lib/jvm/java-1.7.0"
-- lineinfile: dest=/home/hadoop/.bashrc regexp="PATH=" line="export PATH=$PATH:$HADOOP_HOME/bin:$JAVA_HOME/bin"
+- lineinfile: dest=/home/hadoop/.bashrc regexp="PATH=" line="export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$JAVA_HOME/bin"
 # Create systemd files
+
+- name: copying slaves into conf location
+  template: src=slaves dest=/usr/local/hadoop/etc/hadoop/slaves owner={{ hadoop_uid }} group={{ hadoop_gid }}
+  when: api_hostname == "hadoopmaster"
+- name: setup systemd unit file
+  template: src={{ item.name }}.j2 dest=/lib/systemd/system/{{ item.name }}
+  with_items:
+    - { name: hadoop-dfs.service }
+    - { name: hadoop-yarn.service }
+  notify: reload systemd
 
 # export HADOOP_PREFIX=/usr/local/hadoop
 # export PATH=/usr/local/hadoop/bin:/usr/local/hadoop/sbin:$PATH

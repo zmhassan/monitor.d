@@ -8,3 +8,7 @@ hadoop_uid: hadoop
 hadoop_gid: hadoop
 hadoop_apache_mirror: http://apache.sunsite.ualberta.ca/hadoop/common
 hadoopmaster: 192.168.33.40
+servers:
+  - {name: hadoopmaster, ip: 192.168.33.40 }
+  - {name: hadoopdata1,  ip: 192.168.33.41 }
+  - {name: hadoopdata2,  ip: 192.168.33.42 }
