@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 #
-# Author: Zak Hassan 
+# Author: Zak Hassan
 #
 
   Vagrant.configure(2) do |config|
