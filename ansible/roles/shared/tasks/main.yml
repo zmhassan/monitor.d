@@ -3,7 +3,6 @@
 - name: install git, java7
   yum: name={{ item }} state=latest
   with_items:
-    - tree
     - java-1.7.0-openjdk-devel.x86_64
   tags:
     - provision_rpm

@@ -18,3 +18,4 @@ server1=192.168.33.40
 server2=192.168.33.41
 server3=192.168.33.42
 HOME=/home/vagrant
+download_zookeeper=False

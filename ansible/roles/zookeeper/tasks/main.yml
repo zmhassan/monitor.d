@@ -1,17 +1,17 @@
 ---
 ###################################################################################
+#
 # Author: Zak Hassan
-# Description: Playbook Apache Zookeeper on openstack like less than 1 min. :)
+# Description: Playbook Apache Zookeeper on Openstack like less than 1 min. :)
 #
 ###################################################################################
-# - name: install git
-#   yum: name=git state=latest
-# - name: install java7
-#   yum: name=java-1.7.0-openjdk-devel.x86_64 state=latest
-# - name: install wget
-#   yum: name=wget state=latest
-# - name: download zookeeper from apache mirror
-#   command: wget http://apache.sunsite.ualberta.ca/zookeeper/zookeeper-3.5.0-alpha/zookeeper-3.5.0-alpha.tar.gz -P /tmp/
+
+- name: download zookeeper from apache mirror
+  command: wget http://apache.sunsite.ualberta.ca/zookeeper/zookeeper-3.5.0-alpha/zookeeper-3.5.0-alpha.tar.gz -P /tmp/
+  when: download_zookeeper == True
+# Creating zookeeper user
+- group: name=zookeeper state=present
+- user: name=zookeeper comment="zookeeper" group=zookeeper shell=/bin/bash
 - name: stat /tmp/zookeeper-3.5.0-alpha.tar.gz
   stat: path=/tmp/zookeeper-3.5.0-alpha.tar.gz
   register: hdbinary_stat
