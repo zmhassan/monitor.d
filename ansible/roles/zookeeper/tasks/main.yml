@@ -31,11 +31,14 @@
 # - name: change permissions to centos user
 #   command: chown -R centos:centos /usr/local/zookeeper
 - name: create logs directory
-  file: path=/usr/local/zookeeper/logs state=directory mode=0755 #group=hadoop owner=hadoop
+  file: path=/usr/local/zookeeper/logs state=directory mode=0777 group=zookeeper owner=zookeeper
 - name: setup configuration file
   template: src=zoo.cfg.j2 dest=/usr/local/zookeeper/conf/zoo.cfg
 - name: setup zk myid file
   template: src=myid.j2 dest=/usr/local/zookeeper/logs/myid
 - name: setup systemd unit file
   template: src=zookeeper-systemd.j2 dest=/lib/systemd/system/zookeeper.service
-#  notify: reload systemd
+  notify: reload systemd
+- name: enable zookeper
+  sudo: yes
+  service: name=zookeeper enabled=yes state=started

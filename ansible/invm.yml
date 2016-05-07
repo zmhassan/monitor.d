@@ -1,0 +1,21 @@
+[hadoop-master-node]
+192.168.33.40           ansible_connection=ssh  ansible_ssh_user=vagrant  api_hostname=hadoopmaster myid=1 ansible_ssh_private_key_file=~/.ssh/id_rsa
+
+[hadoop-data1-node]
+192.168.33.41              ansible_connection=ssh  ansible_ssh_user=vagrant myid=2  api_hostname=hadoopdata1  ansible_ssh_private_key_file=~/.ssh/id_rsa
+
+[hadoop-data2-node]
+192.168.33.42              ansible_connection=ssh  ansible_ssh_user=vagrant myid=3  api_hostname=hadoopdata2   ansible_ssh_private_key_file=~/.ssh/id_rsa
+
+
+[hadoop-nodes:children]
+hadoop-data1-node
+hadoop-data2-node
+
+
+[all:vars]
+server1=192.168.33.40
+server2=192.168.33.41
+server3=192.168.33.42
+HOME=/home/vagrant
+download_zookeeper=False
