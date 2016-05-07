@@ -3,6 +3,6 @@
  - name: reload systemd
    sudo: yes
    command: systemctl daemon-reload
- - name: restart zookeeper
+ - name: start zookeeper
    sudo: yes
-   command: systemctl restart
+   command: systemctl start zookeeper

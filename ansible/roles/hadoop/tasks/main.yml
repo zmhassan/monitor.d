@@ -18,6 +18,7 @@
   copy: src=hdfs_rsa dest=/home/hadoop/.ssh group={{ hadoop_gid }}
 
 
+
 - name: stat /tmp/{{ hadoop_binary }}
   stat: path=/tmp/{{ hadoop_binary }}
   register: hdbinary_stat
@@ -62,6 +63,10 @@
 - lineinfile: dest=/home/hadoop/.bashrc regexp="HADOOP_HOME=" line="export HADOOP_HOME=/usr/local/hadoop"
 - lineinfile: dest=/home/hadoop/.bashrc regexp="JAVA_HOME=" line="export JAVA_HOME=/usr/lib/jvm/java-1.7.0"
 - lineinfile: dest=/home/hadoop/.bashrc regexp="PATH=" line="export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$JAVA_HOME/bin"
+# ssh agent
+# - lineinfile: dest=/home/hadoop/.bashrc regexp="ssh-add" line="ssh-add ~/.ssh/hdfs_rsa"
+# - lineinfile: dest=/home/hadoop/.bashrc regexp="ssh-agent" line="ssh-agent $SHELL"
+
 
 # Create systemd files
 
