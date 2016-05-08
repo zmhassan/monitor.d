@@ -9,7 +9,9 @@
 
 
   <modules>
-      <module>microservices/core-api</module>
+    <module>microservices/core-api</module>
+    <module>microservices/kafka-consumer</module>
+    <module>microservices/kafka-producer</module>
   </modules>
 
   <build>

@@ -7,7 +7,6 @@
 # Creating kafka user
 - group: name=kafka state=present
 - user: name=kafka comment="kafka" group=kafka shell=/bin/bash
-
 - name: stat /tmp/{{ kafka_binary }}
   stat: path=/tmp/{{ kafka_binary }}
   register: kfbinary_stat
