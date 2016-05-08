@@ -19,3 +19,4 @@ server2=192.168.33.41
 server3=192.168.33.42
 HOME=/home/vagrant
 download_zookeeper=False
+zk_urls=hadoopmaster:2181,hadoopdata1:2181,hadoopdata2:2181
