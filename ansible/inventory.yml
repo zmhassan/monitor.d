@@ -12,10 +12,23 @@
 hadoop-data1-node
 hadoop-data2-node
 
-
-[all:vars]
-server1=192.168.33.40
+[hadoop-master-node:vars]
+server1=0.0.0.0
 server2=192.168.33.41
 server3=192.168.33.42
+
+[hadoop-data1-node:vars]
+server1=192.168.33.40
+server2=0.0.0.0
+server3=192.168.33.42
+
+[hadoop-data2-node:vars]
+server1=192.168.33.40
+server2=192.168.33.41
+server3=0.0.0.0
+
+
+[all:vars]
 HOME=/home/vagrant
 download_zookeeper=False
+zk_urls=hadoopmaster:2181,hadoopdata1:2181,hadoopdata2:2181

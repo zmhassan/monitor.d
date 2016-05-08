@@ -76,6 +76,7 @@
   with_items:
     - { name: hadoop-dfs.service }
     - { name: hadoop-yarn.service }
+    - { name: hadoop-job-history.service }
   notify: reload systemd
 
 # export HADOOP_PREFIX=/usr/local/hadoop
