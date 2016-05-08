@@ -1,5 +1,6 @@
 ---
 # tasks file for hive
+# Need to configure hive to
 - name: stat /tmp/apache-hive-2.0.0-bin.tar.gz
   stat: path=/tmp/apache-hive-2.0.0-bin.tar.gz
   register: hivebinary_stat
@@ -16,3 +17,6 @@
 - name: rename file
   command: creates="/usr/local/hive" mv /usr/local/apache-hive-2.0.0-bin/  /usr/local/hive
   when: hive_dir_stat.stat.exists == False
+- name: setup core-site.xml file
+  template: src=hive-site.xml.j2 dest=/usr/local/hive/conf/hive-site.xml
+  
