@@ -10,6 +10,7 @@
    hosts: all
    roles:
      - { role: shared, when: "ansible_os_family == 'RedHat'" }
-     - { role: hadoop, when: "ansible_os_family == 'RedHat'" }
      - { role: zookeeper, when: "ansible_os_family == 'RedHat'" }
+     - { role: hive, when: "ansible_os_family == 'RedHat'" }
+     - { role: hadoop, when: "ansible_os_family == 'RedHat'" }
 #     - { role: kafka, when: "ansible_os_family == 'RedHat'" }
