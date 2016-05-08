@@ -1,5 +1,6 @@
 ---
 # tasks file for env
+# yum install http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.rpm
 - name: install git, java7
   yum: name={{ item }} state=latest
   with_items:
