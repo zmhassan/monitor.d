@@ -19,4 +19,5 @@
    hosts: hadoop-master-node
    roles:
      - { role: hive, when: "ansible_os_family == 'RedHat'" }
+     - { role: pig, when: "ansible_os_family == 'RedHat'" }
      - { role: spark, when: "ansible_os_family == 'RedHat'" }

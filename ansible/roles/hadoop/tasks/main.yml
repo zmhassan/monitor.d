@@ -7,11 +7,7 @@
 #
 # Description: Playbook created to demonstrate provisioning cloud environment in like less than 1 min. :)
 #####################################################
-
-- group: name={{ hadoop_gid }} state=present
-
-- user: name={{ hadoop_uid }} comment="hadoop" group={{ hadoop_gid }} shell=/bin/bash
-
+#Moved hadoop user creation to shared module
 - authorized_key: user=hadoop key="{{ lookup('file', 'hdfs_rsa.pub') }}"
 
 - name: copy hdfs_rsa key
@@ -63,7 +59,8 @@
 - lineinfile: dest=/home/hadoop/.bashrc regexp="HADOOP_HOME=" line="export HADOOP_HOME=/usr/local/hadoop"
 - lineinfile: dest=/home/hadoop/.bashrc regexp="JAVA_HOME=" line="export JAVA_HOME=/usr/lib/jvm/java-1.7.0"
 - lineinfile: dest=/home/hadoop/.bashrc regexp="HIVE_HOME=" line="export HIVE_HOME=/usr/local/hive"
-- lineinfile: dest=/home/hadoop/.bashrc regexp="PATH=" line="export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$JAVA_HOME/bin:$HIVE_HOME/bin"
+- lineinfile: dest=/home/hadoop/.bashrc regexp="PIG_HOME=" line="export HIVE_HOME=/usr/local/pig"
+- lineinfile: dest=/home/hadoop/.bashrc regexp="PATH=" line="export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$JAVA_HOME/bin:$HIVE_HOME/bin:$PIG_HOME/bin"
 
 
 # Create systemd files
