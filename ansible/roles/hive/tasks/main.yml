@@ -1,6 +1,18 @@
 ---
 # tasks file for hive
+# Prereq: Install mysql for the metastore: http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+# yum install mysql-server this will take time from the installation.
+#  yum install mysql-connector-java
+# ln -s /usr/share/java/mysql-connector-java.jar /usr/local/hive/lib/mysql-connector-java.jar
 # Need to configure hive to
+#
+#mysql> CREATE USER 'hiveuser'@'%' IDENTIFIED BY 'hivepassword';
+#mysql> GRANT all on *.* to 'hiveuser'@localhost identified by 'hivepassword';
+#mysql>  flush privileges;
+#
+# schematool -dbType mysql -initSchema -userName hiveuser -passWord hivepassword
+#
+#
 - name: stat /tmp/apache-hive-2.0.0-bin.tar.gz
   stat: path=/tmp/apache-hive-2.0.0-bin.tar.gz
   register: hivebinary_stat
@@ -19,4 +31,3 @@
   when: hive_dir_stat.stat.exists == False
 - name: setup core-site.xml file
   template: src=hive-site.xml.j2 dest=/usr/local/hive/conf/hive-site.xml
-  

@@ -1,17 +1,27 @@
 ---
 # tasks file for env
+# TODO: Additional Things to install 'mysql-server' for hive metastore.
+# TODO: CREATE PLAYBOOK ROLE FOR GANGLIA
 # yum install http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.rpm
+
+- group: name={{ hadoop_gid }} state=present
+
+- user: name={{ hadoop_uid }} comment="hadoop" group={{ hadoop_gid }} shell=/bin/bash
+
 - name: install git, java7
   yum: name={{ item }} state=latest
   with_items:
     - java-1.7.0-openjdk-devel.x86_64
   tags:
     - provision_rpm
+# Ssh performance and disabling of knownkeys
 - name: setup hosts file
-  template: src=hosts.j2
-        dest=/etc/hosts
+  template: src=ssh.config.j2   dest=/home/hadoop/.ssh/config
+
+- name: setup hosts file
+  template: src=hosts.j2   dest=/etc/hosts
   register: installing_hosts_config
+
 - name: setup bashrc file
-  template: src=bashrc.j2
-        dest={{ HOME }}/.bashrc
+  template: src=bashrc.j2  dest={{ HOME }}/.bashrc
   register: installing_hosts_config
