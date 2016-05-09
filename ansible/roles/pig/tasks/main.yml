@@ -1,0 +1,14 @@
+---
+# tasks file for pig
+- name: stat /tmp/pig-0.13.0.tar.gz
+  stat: path=/tmp/pig-0.13.0.tar.gz
+  register: pigbinary_stat
+# - name: stat /usr/local/spark
+#   stat: path=/usr/local/hive
+#   register: hive_dir_stat
+
+- name: uncompress pig tarball and place in /usr/local/
+  unarchive: src=pig-0.13.0.tar.gz dest=/usr/local/ owner=hadoop group=hadoop
+
+- name: rename file
+  command: creates="/usr/local/pig" mv /usr/local/pig-0.13.0/  /usr/local/pig
