@@ -5,9 +5,11 @@
 #
 # Description: Playbook created to demonstrate provisioning cloud environment in like less than 1 min. :)
 #
+
+
  - name: Configure Apache Zookeeper, Kafka, Hadoop On Cluster
    sudo: True
-   hosts: all
+   hosts: hadoop-standard-nodes
    roles:
      - { role: shared, when: "ansible_os_family == 'RedHat'" }
      - { role: zookeeper, when: "ansible_os_family == 'RedHat'" }
