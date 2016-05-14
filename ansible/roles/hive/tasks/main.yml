@@ -1,6 +1,6 @@
 ---
 # tasks file for hive
-# Prereq: Install mysql for the metastore: http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+# Prereq: Install mysql for the metastore:   http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 # yum install mysql-server this will take time from the installation.
 #  yum install mysql-connector-java
 # ln -s /usr/share/java/mysql-connector-java.jar /usr/local/hive/lib/mysql-connector-java.jar
@@ -13,21 +13,57 @@
 # schematool -dbType mysql -initSchema -userName hiveuser -passWord hivepassword
 #
 #
+- name: install mysql-rpms
+  command:  yum install  {{ item }} -y
+  with_items:
+    - gcc
+    - http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+    - mysql-server
+    - mysql-connector-java
+    - mysql-devel
+    - python-devel
+  when: api_hostname == "hadoopmaster"
+
+# Make sure mysql service is running
+- name: enable mysql
+  sudo: yes
+  service: name=mysql enabled=yes state=started
+
+- name: create symbolic link to mysql jdbc driver
+  command: ln -s /usr/share/java/mysql-connector-java.jar /usr/local/hive/lib/mysql-connector-java.jar
+
+# You will need mysql-python to create users
+- name: Install the Python MySQLB module
+  pip: name=MySQL-python
+#  ansible localhost -m mysql_user -a "name=hiveuser password=hivepassword priv=*.*:ALL state=present" -s
+# create mysql user
+- mysql_user: name=hiveuser password=hivepassword priv=*.*:ALL state=present
+
+- name: create mysql metastore
+  command: schematool -dbType mysql -initSchema -userName hiveuser -passWord hivepassword
+
 - name: stat /tmp/apache-hive-2.0.0-bin.tar.gz
   stat: path=/tmp/apache-hive-2.0.0-bin.tar.gz
   register: hivebinary_stat
+
 - name: copy hive to tmp folder
   copy: src=apache-hive-2.0.0-bin.tar.gz dest=/tmp/
   when: hivebinary_stat.stat.exists == False
   tags:
     - provision_copy_to_remote
+
 - name: unzip tarball and place in /usr/local/
   command: tar zxf /tmp/apache-hive-2.0.0-bin.tar.gz -C /usr/local/
+
 - name: stat /usr/local/hive
   stat: path=/usr/local/hive
   register: hive_dir_stat
+
 - name: rename file
   command: creates="/usr/local/hive" mv /usr/local/apache-hive-2.0.0-bin/  /usr/local/hive
   when: hive_dir_stat.stat.exists == False
+
+# TODO: Add 'hive.support.concurrency=true, '
+# TODO: Add 'hive.zookeeper.quorum=hadoopmaster,hadoopdata1, hadoopdata2'
 - name: setup core-site.xml file
   template: src=hive-site.xml.j2 dest=/usr/local/hive/conf/hive-site.xml
