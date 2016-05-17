@@ -7,13 +7,13 @@
 
 
 [hadoop-master-node]
-192.168.33.40     server1=0.0.0.0 server2=192.168.33.41 server3=192.168.33.42      ansible_connection=ssh  ansible_ssh_user=vagrant  api_hostname=hadoopmaster myid=1 ansible_ssh_private_key_file=/Users/vader/.vagrant.d/insecure_private_key
+192.168.33.40       server1=0.0.0.0 server2=192.168.33.41 server3=192.168.33.42      ansible_connection=ssh  ansible_ssh_user=vagrant  api_hostname=hadoopmaster myid=1 ansible_ssh_private_key_file=/Users/vader/.vagrant.d/insecure_private_key
 
 [hadoop-data1-node]
-192.168.33.41     server1=192.168.33.40 server2=0.0.0.0 server3=192.168.33.42         ansible_connection=ssh  ansible_ssh_user=vagrant myid=2  api_hostname=hadoopdata1  ansible_ssh_private_key_file=/Users/vader/.vagrant.d/insecure_private_key
+192.168.33.41    server1=192.168.33.40 server2=0.0.0.0 server3=192.168.33.42         ansible_connection=ssh  ansible_ssh_user=vagrant myid=2  api_hostname=hadoopdata1  ansible_ssh_private_key_file=/Users/vader/.vagrant.d/insecure_private_key
 
 [hadoop-data2-node]
-192.168.33.42       server1=192.168.33.40 server2=192.168.33.41 server3=0.0.0.0        ansible_connection=ssh  ansible_ssh_user=vagrant myid=3  api_hostname=hadoopdata2   ansible_ssh_private_key_file=/Users/vader/.vagrant.d/insecure_private_key
+192.168.33.42      server1=192.168.33.40 server2=192.168.33.41 server3=0.0.0.0        ansible_connection=ssh  ansible_ssh_user=vagrant myid=3  api_hostname=hadoopdata2   ansible_ssh_private_key_file=/Users/vader/.vagrant.d/insecure_private_key
 
 
 

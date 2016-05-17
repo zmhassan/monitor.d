@@ -7,7 +7,7 @@
 
 
 [hadoop-master-node]
-192.168.33.40     server1=0.0.0.0 server2=192.168.33.41 server3=192.168.33.42      ansible_connection=ssh  ansible_ssh_user=vagrant  api_hostname=hadoopmaster myid=1 ansible_ssh_private_key_file=~/.ssh/id_rsa
+192.168.33.40        server1=0.0.0.0 server2=192.168.33.41 server3=192.168.33.42      ansible_connection=ssh  ansible_ssh_user=vagrant  api_hostname=hadoopmaster myid=1 ansible_ssh_private_key_file=~/.ssh/id_rsa
 
 [hadoop-data1-node]
 192.168.33.41     server1=192.168.33.40 server2=0.0.0.0 server3=192.168.33.42         ansible_connection=ssh  ansible_ssh_user=vagrant myid=2  api_hostname=hadoopdata1  ansible_ssh_private_key_file=~/.ssh/id_rsa
