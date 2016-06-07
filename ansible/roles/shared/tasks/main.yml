@@ -5,14 +5,14 @@
 # yum install http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.rpm
 
 
+# - name: install epel
+#   yum: name=epel-release state=latest
 
-- name: install git, java7
-  yum: name={{ item }} state=latest
-  with_items:
-    - java-1.7.0-openjdk-devel.x86_64
-  tags:
-    - provision_rpm
-# Ssh performance and disabling of knownkeys
+- name: install  java7
+  yum: name=java-1.7.0-openjdk-devel.x86_64 state=latest
+
+# - name: install  zeromq
+#   yum: name=zeromq state=latest
 
 - name: setup hosts file
   template: src=hosts.j2   dest=/etc/hosts

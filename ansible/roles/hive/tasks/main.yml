@@ -1,16 +1,25 @@
 ---
 # tasks file for hive
 
+# http://mirror.its.dal.ca/apache/hive/hive-2.0.0/apache-hive-2.0.0-bin.tar.gz
 
 - name: stat /tmp/apache-hive-2.0.0-bin.tar.gz
   stat: path=/tmp/apache-hive-2.0.0-bin.tar.gz
-  register: hivebinary_stat
+  register: hive_binary_stat
 
-- name: copy hive to tmp folder
-  copy: src=apache-hive-2.0.0-bin.tar.gz dest=/tmp/
-  when: hivebinary_stat.stat.exists == False
-  tags:
-    - provision_copy_to_remote
+- name: Downloading Apache Hive
+  get_url: url=http://mirror.its.dal.ca/apache/hive/hive-2.0.0/apache-hive-2.0.0-bin.tar.gz  dest=/tmp/apache-hive-2.0.0-bin.tar.gz
+  when: hive_binary_stat.stat.exists == False
+
+- name: rename file
+  command: chown hadoop:hadoop /tmp/apache-hive-2.0.0-bin.tar.gz
+
+#
+# - name: copy hive to tmp folder
+#   copy: src=apache-hive-2.0.0-bin.tar.gz dest=/tmp/
+#   when: hivebinary_stat.stat.exists == False
+#   tags:
+#     - provision_copy_to_remote
 
 - name: unzip tarball and place in /usr/local/
   command: tar zxf /tmp/apache-hive-2.0.0-bin.tar.gz -C /usr/local/
@@ -23,9 +32,11 @@
   command: creates="/usr/local/hive" mv /usr/local/apache-hive-2.0.0-bin/  /usr/local/hive
   when: hive_dir_stat.stat.exists == False
 
-
-- name: create mysql metastore
-  command: schematool -dbType mysql -initSchema -userName hiveuser -passWord hivepassword
+# TODO: This step is going to be manual.
+# - name: create mysql metastore
+#   command: /usr/local/hive/bin/schematool -dbType mysql -initSchema -userName hiveuser -passWord hivepassword
+#   become: yes
+#   become_user: hadoop
 
 - name: copy mysql jdbc driver
   command: cp /usr/share/java/mysql-connector-java.jar /usr/local/hive/lib/mysql-connector-java.jar

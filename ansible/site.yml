@@ -24,7 +24,8 @@
    sudo: True
    hosts: hadoop-master-node
    roles:
-     - { role: mysql, when: "ansible_os_family == 'RedHat'" }
-     - { role: hive, when: "ansible_os_family == 'RedHat'" }
      - { role: pig, when: "ansible_os_family == 'RedHat'" }
      - { role: spark, when: "ansible_os_family == 'RedHat'" }
+     - { role: elasticsearch, when: "ansible_os_family == 'RedHat'" }
+     - { role: mysql, when: "ansible_os_family == 'RedHat'" }
+     - { role: hive, when: "ansible_os_family == 'RedHat'" }
