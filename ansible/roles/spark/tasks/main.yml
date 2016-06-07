@@ -2,15 +2,21 @@
 # tasks file for spark
 # After installed go to http://hadoopmaster:4040/jobs/ to see the jobs executed
 # Need to configure hive to
+
+
 - name: stat /tmp/spark-1.6.1-bin-hadoop2.6.tgz
   stat: path=/tmp/spark-1.6.1-bin-hadoop2.6.tgz
-  register: sparkbinary_stat
-# - name: stat /usr/local/spark
-#   stat: path=/usr/local/hive
-#   register: hive_dir_stat
+  register: spark_binary_stat
+
+- name: Downloading Apache Spark
+  get_url: url=http://d3kbcqa49mib13.cloudfront.net/spark-1.6.1-bin-hadoop2.6.tgz  dest=/tmp/spark-1.6.1-bin-hadoop2.6.tgz
+  when: spark_binary_stat.stat.exists == False
+
+- name: rename file
+  command: chown hadoop:hadoop /tmp/spark-1.6.1-bin-hadoop2.6.tgz
 
 - name: uncompress spark tarball and place in /usr/local/
-  unarchive: src=spark-1.6.1-bin-hadoop2.6.tgz dest=/usr/local/ owner=hadoop group=hadoop
+  unarchive: src=/tmp/spark-1.6.1-bin-hadoop2.6.tgz dest=/usr/local/ owner=hadoop group=hadoop
 
 - name: rename file
   command: creates="/usr/local/spark" mv /usr/local/spark-1.6.1-bin-hadoop2.6/  /usr/local/spark

@@ -14,15 +14,18 @@
 #
 #
 
+- name: mysql rpms
+  yum: name=http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm state=present
+
 - name: install mysql-rpms
-  yum: name={{ item }}  state=present
+  command: yum install {{ item }} -y
   with_items:
     - gcc
-    - http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
     - mysql-server
     - mysql-connector-java
     - mysql-devel
     - python-devel
+    - python-pip
 
 # Make sure mysql service is running
 - name: enable mysql
