@@ -25,7 +25,7 @@ public class Main {
 
 		    public static void main(String[] args) {
 		        new Main();
-		        String topic = "kafkatopic";
+		        String topic = "spark-log-processor";
 		        String msg = "I I love you long time!love you!";
 		        KeyedMessage<Integer, String> data = new KeyedMessage<>(topic, msg);
 		        producer.send(data);
