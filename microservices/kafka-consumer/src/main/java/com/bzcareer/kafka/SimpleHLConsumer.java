@@ -53,7 +53,7 @@ public class SimpleHLConsumer {
 	public static void main(String[] args) {
 		String zooKeeper = "localhost:2181";//args[0];
 		String groupId = "test1";//args[1];
-		String topic = "kafkatopic";//args[2];
+		String topic = "spark-log-processor";//args[2];
 		SimpleHLConsumer simpleHLConsumer = new SimpleHLConsumer(zooKeeper,
 				groupId, topic);
 		simpleHLConsumer.testConsumer();
