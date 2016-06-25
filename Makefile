@@ -10,3 +10,5 @@ create-docker-img:
 	./bin/make-ui.sh
 push-docker-img:
 	./bin/push-monitord-ui.sh
+build:
+	mvn clean install
