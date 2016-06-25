@@ -1,9 +1,11 @@
 package com.bzcareer.producer;
 
 import java.util.Properties;
+import java.util.concurrent.Future;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
 
 public class KafkaMessenger {
 
@@ -21,9 +23,9 @@ public class KafkaMessenger {
 	}
 	
 	
-	public void send(String topic, String msg){
+	public Future<RecordMetadata> send(String topic, String msg){
 		ProducerRecord<String, String> data = new ProducerRecord<>(topic, msg);
-        producer.send(data); 
+        return producer.send(data); 
 	}
 	
 	public void close(){
