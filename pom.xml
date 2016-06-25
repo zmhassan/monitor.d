@@ -12,6 +12,7 @@
     <module>microservices/core-api</module>
     <module>microservices/kafka-consumer</module>
     <module>microservices/kafka-producer</module>
+    <module>microservices/spark-TDD</module>
   </modules>
 
   <build>
