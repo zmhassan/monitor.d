@@ -9,13 +9,14 @@ public class Main {
 
 		try {
 
-			messenger.send("logtest", "apple").get();
-			messenger.send("logtest", "orange").get();
-			messenger.send("logtest", "watermelon").get();
-			messenger.send("logtest", "grape").get();
+			messenger.sendWithCallback("logtest", "apple").get();
+			messenger.sendWithCallback("logtest", "orange").get();
+			messenger.sendWithCallback("logtest", "watermelon").get();
+			messenger.sendWithCallback("logtest", "grape").get();
 
 		} catch (InterruptedException | ExecutionException e) {
 			e.printStackTrace();
+			System.out.println("Error");
 		} finally {
 			messenger.close();
 		}
