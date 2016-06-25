@@ -27,7 +27,12 @@ public class KafkaMessenger {
 		ProducerRecord<String, String> data = new ProducerRecord<>(topic, msg);
         return producer.send(data); 
 	}
-	
+
+	public Future<RecordMetadata> sendWithCallback(String topic, String msg){
+		ProducerRecord<String, String> data = new ProducerRecord<>(topic, msg);
+        return producer.send(data, new KafkaMessengerCallback()); 
+	}
+
 	public void close(){
         producer.close();
 	}
