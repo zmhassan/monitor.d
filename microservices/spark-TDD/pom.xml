@@ -35,4 +35,6 @@
 		</dependency>
 
 	</dependencies>
+	<name>BZCareer :: Monitor.D :: Spark TDD</name>
+	<description>BZCareer Spark Implementation with TDD</description>
 </project>
