@@ -7,11 +7,12 @@
   <name>BZCareer :: Monitor.D :: Parent</name>
   <description>BZCareer Parent Module</description>
 
-
   <modules>
     <module>microservices/core-api</module>
     <module>microservices/kafka-consumer</module>
     <module>microservices/kafka-producer</module>
+    <module>microservices/spark-TDD</module>
+    <module>distro-assembly</module>
   </modules>
 
   <build>

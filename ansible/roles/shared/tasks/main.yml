@@ -4,27 +4,15 @@
 # TODO: CREATE PLAYBOOK ROLE FOR GANGLIA
 # yum install http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.rpm
 
-- group: name={{ hadoop_gid }} state=present
 
-- user: name={{ hadoop_uid }} comment="hadoop" group={{ hadoop_gid }} shell=/bin/bash
+# - name: install epel
+#   yum: name=epel-release state=latest
 
-# So hadoop can ssh into alternate servers using hadoop acount
-- lineinfile: dest=/home/hadoop/.bashrc regexp="HADOOP_HOME=" line="export HADOOP_HOME=/usr/local/hadoop"
-- lineinfile: dest=/home/hadoop/.bashrc regexp="JAVA_HOME=" line="export JAVA_HOME=/usr/lib/jvm/java-1.7.0"
-- lineinfile: dest=/home/hadoop/.bashrc regexp="HIVE_HOME=" line="export HIVE_HOME=/usr/local/hive"
-- lineinfile: dest=/home/hadoop/.bashrc regexp="PIG_HOME=" line="export PIG_HOME=/usr/local/pig"
-- lineinfile: dest=/home/hadoop/.bashrc regexp="PATH=" line="export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$JAVA_HOME/bin:$HIVE_HOME/bin:$PIG_HOME/bin"
+- name: install  java7
+  yum: name=java-1.7.0-openjdk-devel.x86_64 state=latest
 
-
-- name: install git, java7
-  yum: name={{ item }} state=latest
-  with_items:
-    - java-1.7.0-openjdk-devel.x86_64
-  tags:
-    - provision_rpm
-# Ssh performance and disabling of knownkeys
-- name: setup hosts file
-  template: src=ssh.config.j2   dest=/home/hadoop/.ssh/config
+# - name: install  zeromq
+#   yum: name=zeromq state=latest
 
 - name: setup hosts file
   template: src=hosts.j2   dest=/etc/hosts
