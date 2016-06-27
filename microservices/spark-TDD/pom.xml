@@ -24,6 +24,11 @@
 			<version>2.0.0.0</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -47,7 +52,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>com.bzcareer.data.analytics.SparkMainJava8</mainClass>
+					<mainClass>com.bzcareer.data.analytics.RiskAnalysisSparkMain</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
