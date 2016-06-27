@@ -1,0 +1,6 @@
+[submodule "web"]
+	path = web
+	url = https://github.com/BZCareer/monitor.d-console.git
+[submodule "ansible"]
+	path = ansible
+	url = https://github.com/BZCareer/hadoop-ansible.git

@@ -10,6 +10,28 @@
 	</formats>
 	<fileSets>
 		<fileSet>
+			<directory>../ansible</directory>
+			<outputDirectory>/ansible/big-data-platform</outputDirectory>
+			<includes>
+				<include>*.yml</include>
+				<include>*.cfg</include>
+				<include>*.sh</include>
+				<include>.env</include>
+				<include>Vagrantfile</include>
+			</includes>
+			<excludes>
+				<exclude>.vagrant</exclude>
+			</excludes>
+		</fileSet>
+		<fileSet>
+			<directory>../ansible/roles</directory>
+			<outputDirectory>/ansible/big-data-platform/roles</outputDirectory>
+			<excludes>
+				<exclude>.vagrant</exclude>
+			</excludes>
+		</fileSet>
+
+		<fileSet>
 			<directory>../</directory>
 			<outputDirectory>/</outputDirectory>
 			<includes>
@@ -48,19 +70,19 @@
 				<include>*.jar</include>
 			</includes>
 		</fileSet>
-		
-		
+
+
 		<fileSet>
 			<directory>../microservices/core-api/src/docs/markdown/generated</directory>
 			<outputDirectory>docs/core-api</outputDirectory>
 		</fileSet>
 		<fileSet>
 			<directory>../microservices/core-api/</directory>
-			<outputDirectory>docker</outputDirectory>
+			<outputDirectory>docker/core-api/</outputDirectory>
 			<includes>
 				<include>Dockerfile</include>
 			</includes>
 		</fileSet>
-		
+
 	</fileSets>
 </assembly>

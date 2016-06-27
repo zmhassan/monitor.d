@@ -1,3 +1,0 @@
-{% for node in servers %}
-{{ node['name'] }}
-{% endfor %}
