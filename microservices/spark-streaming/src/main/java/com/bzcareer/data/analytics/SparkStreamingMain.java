@@ -74,13 +74,13 @@ public class SparkStreamingMain {
 			JsonReader reader = new JsonReader(new StringReader(stripOutQuotes));
 			reader.setLenient(true);
 			logs = gson.fromJson(reader, WebAccessRecords.class);
-			saveToCassandra(logs);
 		} catch (Exception e) {
 			System.err.println("Invalid String:"+ items.substring(1,items.length()-2));
 			System.err.println(e);
 		}
 		return logs;
 	}
+
 
 	private static JsonElement extractJsonElement(String items, String searchKey) {
 		JsonParser parser = new JsonParser();
